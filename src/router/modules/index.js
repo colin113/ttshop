@@ -401,7 +401,7 @@ export default [
       path: "",
       title: i18n.global.t("router.login"),
       requireAuth: false,
-      keepAlive: true,
+      keepAlive: false,
     },
   },
   //注册
