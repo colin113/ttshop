@@ -93,13 +93,6 @@ const getcheckInvite = () => {
 
 onMounted(() => {
   defautlanguage()
-  const userinfo = localStorage.getItem('user')
-  if (userinfo) {
-    let token = JSON.parse(userinfo).token
-    if (token) {
-      router.push('home')
-    }
-  }
 
   if (route.query.status == null) {
     route.query.status = -1

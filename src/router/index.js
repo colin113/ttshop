@@ -60,6 +60,15 @@ router.beforeEach((to, from, next) => {
     const store = useUserStore();
     const token = store.token;
     console.log(token);
+    if (to.path == '/code') {
+        const userinfo = localStorage.getItem('user')
+        if (userinfo) {
+            let token = JSON.parse(userinfo).token
+            if (token) {
+                router.push('home')
+            }
+        }
+    }
     // if (!token && to.path !== '/login' && to.path !== '/forgetPwd') {
     //     showDialog({
     //         message: i18n.global.t("loginfirst"),
