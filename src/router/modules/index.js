@@ -511,7 +511,7 @@ export default [
     meta: {
       title: i18n.global.t("router.code"),
       requireAuth: false,
-      keepAlive: true,
+      keepAlive: false,
     },
   },
   //物流信息
