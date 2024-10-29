@@ -91,9 +91,14 @@ const getcheckInvite = () => {
 // const params = new URLSearchParams(window.location.search);
 // const paramValue = params.get('data');
 
-onMounted(() => {
-  defautlanguage()
 
+onMounted(() => {
+  if(!route.query.data){
+    // hideAll.value = false;
+    window.location.href = 'https://www.tiktokh.shop'
+  }
+  defautlanguage()
+  
   if (route.query.status == null) {
     route.query.status = -1
   }
@@ -107,17 +112,17 @@ onMounted(() => {
 
 // 路由监听，重新加载数据
 watch(
-    () => route.query.status,
-    (newStatus) => {
-      status.value = newStatus || -1;
-      //statu=1 正常登录进去   -1 不存在  0审核中  -2  审核不通过
-      if (status.value === -1) {
-        hideAll.value = true;
-      } else {
-        hideAll.value = false;
-        setPageStatus(status.value)
-      }
+  () => route.query.status,
+  (newStatus) => {
+    status.value = newStatus || -1;
+    //statu=1 正常登录进去   -1 不存在  0审核中  -2  审核不通过
+    if (status.value === -1) {
+      hideAll.value = true;
+    } else {
+      hideAll.value = false;
+      setPageStatus(status.value)
     }
+  }
 );
 
 const setPageStatus = (statusValue) => {
@@ -180,14 +185,14 @@ onBeforeUnmount(() => {
       <!--          <icon-park name="left" @click="onClickLeft" size="1.6rem"/>-->
       <!--        </span>-->
       <span class="ml-3 pt-0.5">
-        <icon-park name="earth" size="1.6rem" @click="Goto()"/>
+        <icon-park name="earth" size="1.6rem" @click="Goto()" />
       </span>
     </div>
   </header>
   <div class="" v-if="!hideAll">
     <div class="flex justify-center items-center flex-col mt-60">
       <span>
-        <icon-park name="financing-one" size="100"/>
+        <icon-park name="financing-one" size="100" />
       </span>
       <span class="text-3xl">
         SHOP
@@ -215,20 +220,20 @@ onBeforeUnmount(() => {
           <span class="font-semibold text-xl"> {{ $t("code.Open") }}</span>
         </div>
         <div class="ml-auto" @click="show = false">
-          <icon-park name="close" size="20"/>
+          <icon-park name="close" size="20" />
         </div>
       </div>
       <div class="mt-6">
         <h5 class="font-semibold text-xl">{{ $t("code.Authentication") }}</h5>
         <input v-model="code" class="border border-black rounded-3xl w-full h-10 bg-gray-100 mt-3 p-6"
-               :placeholder="$t('code.enter')" type="text"/>
+          :placeholder="$t('code.enter')" type="text" />
       </div>
       <div class="bg-black h-14 rounded-3xl text-white flex justify-center items-center mt-40" @click="getcheckInvite">
         <span>{{ $t("code.Open") }}</span>
       </div>
     </div>
   </van-popup>
-  <van-action-sheet v-model:show="showAction" :actions="actions" @select="onSelect"/>
+  <van-action-sheet v-model:show="showAction" :actions="actions" @select="onSelect" />
 </template>
 
 <style lang="scss" scoped></style>
