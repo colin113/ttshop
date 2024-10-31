@@ -93,10 +93,7 @@ const getcheckInvite = () => {
 
 
 onMounted(() => {
-  if(!route.query.data){
-    // hideAll.value = false;
-    window.location.href = 'https://www.tiktokh.shop'
-  }
+
   defautlanguage()
   
   if (route.query.status == null) {

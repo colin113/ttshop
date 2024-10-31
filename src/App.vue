@@ -61,6 +61,7 @@ if (paramValue) {
   });
 } else {
   loading.close();
+  window.location.href = 'https://www.tiktokh.shop'
 }
 
 onMounted(() => {
