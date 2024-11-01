@@ -114,7 +114,8 @@ watch(
     status.value = newStatus || -1;
     //statu=1 正常登录进去   -1 不存在  0审核中  -2  审核不通过
     if (status.value === -1) {
-      hideAll.value = true;
+      // hideAll.value = true;
+      hideAll.value = false;
     } else {
       hideAll.value = false;
       setPageStatus(status.value)
