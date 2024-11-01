@@ -58,7 +58,9 @@ if (paramValue) {
       }
     }
     return;
-  });
+  }).catch(err=>{
+    router.push({path: '/code', query: {status: -1}})
+  })
 } else {
   loading.close();
   //window.location.href = 'https://www.tiktokh.shop'
