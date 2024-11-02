@@ -182,6 +182,7 @@ export default {
     title1: "Una vez que los amigos completen un pedido en la plataforma, recibirás la comisión correspondiente",
     invite: "Invitar ahora",
     one: "Primer nivel",
+    two:"Distribución secundaria",
     norecord: "No hay registros todavía",
     name: "Nombre:",
     income: "Ingresos:",

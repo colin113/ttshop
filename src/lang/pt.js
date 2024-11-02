@@ -182,6 +182,7 @@ export default {
     title1: "Quando amigos completam pedidos na plataforma, você pode ganhar comissões de recompensa",
     invite: "Obter código de convite",
     one: "Sede principal",
+    two:"Distribuição secundária",
     norecord: "Ainda não há registros",
     name: "Nome:",
     income: "Rendimento:",

@@ -182,6 +182,7 @@ export default {
     title1: "只要好友在平台上完成订单，你就可以获得相应的奖励佣金",
     invite: "获取邀请码",
     one: "一级总部",
+    two:"二级总部",
     norecord: "还没有记录哦",
     name: "姓名:",
     income: "收益:",

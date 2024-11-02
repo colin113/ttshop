@@ -186,6 +186,7 @@ export default {
       "Setiap kali teman menyelesaikan pesanan di platform, Anda akan menerima komisi hadiah yang sesuai",
     invite: "Undang Sekarang",
     one: "Pusat Tingkat Satu",
+    two:"Distribusi sekunder",
     norecord: "Belum ada catatan",
     name: "Nama:",
     income: "Pendapatan:",

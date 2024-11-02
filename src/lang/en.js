@@ -185,6 +185,7 @@ export default {
       "You earn commission rewards when friends complete orders on the platform",
     invite: "Invite Now",
     one: "First Level Headquarters",
+    two:"Secondary distribution",
     norecord: "No records yet",
     name: "Name:",
     income: "Income:",

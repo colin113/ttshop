@@ -183,6 +183,7 @@ export default {
     title1: "Sobald Freunde eine Bestellung auf der Plattform abschließen, erhalten Sie die entsprechende Provision",
     invite: "Jetzt einladen",
     one: "Erste Ebene",
+    two:"Sekundärverteilung",
     norecord: "Noch keine Einträge",
     name: "Name:",
     income: "Einkommen:",

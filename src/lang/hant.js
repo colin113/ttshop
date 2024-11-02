@@ -182,6 +182,7 @@ export default {
     title1: "只要好友在平台上完成訂單，你就可以獲得相應的獎勵佣金",
     invite: "獲取邀請碼",
     one: "一級總部",
+    two:"二級總部",
     norecord: "還沒有記錄哦",
     name: "姓名:",
     income: "收益:",

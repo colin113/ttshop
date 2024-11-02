@@ -11,12 +11,14 @@ const onClickLeft = () => {
 };
 // 接口请求
 const List = ref([])
+const List2 = ref([])
 const address = ref(null);
 const getalliance = async () => {
   const res = await alliance()
   console.log(res)
   address.value = res.data.url
   List.value = res.data.list
+  List2.value = res.data.list2
 }
 getalliance()
 // onBeforeMount(()=>{
@@ -85,6 +87,26 @@ const copy = (textToCopy) => {
       </div>
       <div class="mt-2 back_4">
         <div class="flex flex-col px-5 py-3 mb-1 bg-white" v-for="item in List">
+          <div class="pb-1 text-lg">{{ $t("alliance.name") }}{{ item.mer_name }}</div>
+          <div class="flex justify-between ">
+            <div><span class="text-xs mr-1">{{ $t("alliance.income") }}{{ item.income }}</span><span
+                class="text-xs">{{ $t("alliance.order") }}{{ item.order_count }}</span></div>
+            <div><span class="text-xs">{{ $t("alliance.createtime") }}{{ item.createtime }}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4">
+      <div class="flex justify-around items-center py-3 back_4 bg-white">
+        <div><span>{{ $t("alliance.two") }}</span></div>
+             <!-- <div><span>二级总部</span></div> -->
+        <!--      <div><span>三级总部</span></div>-->
+      </div>
+      <div v-if="List2.length<=0">
+        <van-empty :description="$t('alliance.norecord')"/>
+      </div>
+      <div class="mt-2 back_4">
+        <div class="flex flex-col px-5 py-3 mb-1 bg-white" v-for="item in List2">
           <div class="pb-1 text-lg">{{ $t("alliance.name") }}{{ item.mer_name }}</div>
           <div class="flex justify-between ">
             <div><span class="text-xs mr-1">{{ $t("alliance.income") }}{{ item.income }}</span><span

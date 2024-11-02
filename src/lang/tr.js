@@ -182,6 +182,7 @@ export default {
     title1: "Arkadaşlarınız platformda sipariş tamamladığında, ilgili ödül komisyonu alabilirsiniz",
     invite: "Davet Kodu Al",
     one: "Birinci Seviye Merkez",
+    two:"İkincil dağıtım",
     norecord: "Henüz kayıt yok",
     name: "Adı Soyadı:",
     income: "Gelir:",
