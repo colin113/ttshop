@@ -2,9 +2,11 @@
 import {alliance} from "@/api/index.js";
 // import QRCode from "vue-qrcode";
 import QrcodeVue from 'qrcode.vue'
+import { ref } from "vue";
 import { useI18n } from 'vue-i18n';
 //多语言
 const { t } = useI18n();
+const mode = ref(1)
 const router = useRouter();
 const onClickLeft = () => {
   router.back();
@@ -78,11 +80,11 @@ const copy = (textToCopy) => {
         class="text-white">{{ $t("alliance.invite") }}</span></div>
     <div class="mt-8">
       <div class="flex justify-around items-center py-3 back_4 bg-white">
-        <div><span>{{ $t("alliance.one") }}</span></div>
-        <!--      <div><span>二级总部</span></div>-->
-        <!--      <div><span>三级总部</span></div>-->
+        <div @click="mode=1" :class="mode==1?'activclass':''"><span>{{ $t("alliance.one") }}</span></div>
+        <div @click="mode=2" :class="mode==2?'activclass':''"><span>{{ $t("alliance.two") }}</span></div>
       </div>
-      <div v-if="List.length<=0">
+      <div v-if="mode==1">
+        <div v-if="List.length<=0">
         <van-empty :description="$t('alliance.norecord')"/>
       </div>
       <div class="mt-2 back_4">
@@ -95,14 +97,9 @@ const copy = (textToCopy) => {
           </div>
         </div>
       </div>
-    </div>
-    <div class="mt-4">
-      <div class="flex justify-around items-center py-3 back_4 bg-white">
-        <div><span>{{ $t("alliance.two") }}</span></div>
-             <!-- <div><span>二级总部</span></div> -->
-        <!--      <div><span>三级总部</span></div>-->
       </div>
-      <div v-if="List2.length<=0">
+      <div v-if="mode==2">
+        <div v-if="List2.length<=0">
         <van-empty :description="$t('alliance.norecord')"/>
       </div>
       <div class="mt-2 back_4">
@@ -115,12 +112,16 @@ const copy = (textToCopy) => {
           </div>
         </div>
       </div>
+      </div>
     </div>
-
   </main>
 </template>
 
 <style scoped lang="scss">
+.activclass{
+  font-weight: bold;
+  font-size: 16px;
+}
 .imgs {
   width: 350px;
   height: 280px;
