@@ -41,8 +41,13 @@ const orderNumberText = ref('');
 const name = ref('');  // New addition for name
 const account = ref('');  // New addition for account
 const blockchaindata = ref([]);
+
+const getrechargedata = ref({
+  type: 2,
+});
+
 const getBlockchaindata = async () => {
-  const res = await getBlockchain();
+  const res = await getBlockchain(getrechargedata.value);
   blockchaindata.value = res.data;
   imgUrl.value = res.data.url;
   if (blockchaindata.value.length > 0) {

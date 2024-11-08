@@ -57,7 +57,6 @@ if (paramValue) {
         }
       }
     }
-    return;
   }).catch(err=>{
     router.push({path: '/code', query: {status: -1}})
   })

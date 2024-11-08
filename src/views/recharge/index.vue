@@ -13,7 +13,7 @@ const onClickLeft = () => {
 
 //0=银行卡,1=数字货币,2=支付宝,3= 微信
 const list = [
-  // { path: '/walletRecharge', type: "", name: t("recharge.chainDeposit"), icon: 'bitcoin', type: 0 },
+   { path: '/bankRecharge',  name: t("recharge.chainDeposit"), icon: 'bitcoin', type: 0 },
  // { path: '/bankRecharge',  name: t("recharge.chainDeposit"), icon: 'bitcoin', type: 0 },
   { path: '/zhifubaoRecharge',  name: t("recharge.zfbDeposit"), icon: '', type: 2 },
   //{ path: '/zhifubaoRecharge', name: t("recharge.wxDeposit"), icon: '', type: 3 },

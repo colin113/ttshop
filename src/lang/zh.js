@@ -482,9 +482,11 @@ export default {
     rechargerecord: "充值记录",
     rechargemethod: "充值方式",
     title1:
-      "官方统一汇率16000印尼盾等于1美元",
+      "官方统一汇率",
+    title6:
+        "人民币等于1美元",
     title12:
-      "充值金额请按整数提交10-100000美元",
+      "充值金额请按整数提交10-100000人民币",
       title13:
       "请勿保存充值账号，充值账号时时更新",
       title14:
@@ -498,8 +500,9 @@ export default {
     submit: "提交",
     title2: "选择充币网络",
     title3: "请选择与提币平台一致的网络",
-    title4: "最才充市额：",
+    title4: "最少充市额：",
     title5: "充币到账：2 次确认",
+    orderNumber: "交易号",
   },
   withdrawRecord: {
     all: "全部",

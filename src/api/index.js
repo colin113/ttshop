@@ -178,6 +178,7 @@ export const getBlockchain = (data) => {
   return service({
     url: "/merchant/merchant/getBlockchain",
     method: "get",
+    params: data,
   });
 };
 //银行卡充值
