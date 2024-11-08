@@ -165,7 +165,7 @@ onBeforeMount(() => {
   getBlockchaindata();
   requestRate();
   if (rechargeType.value == "0") {
-    title.value = t("recharge.chainDeposit")
+    title.value = t("recharge.bankDeposit")
     unit.value = t("withdraw.amount")
   } else if (rechargeType.value == "2") {
     title.value = t("recharge.zfbDeposit")

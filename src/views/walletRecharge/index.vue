@@ -20,25 +20,15 @@ const onClickLeft = () => {
   router.back();
 };
 
-const floatingPanel = ref(null);
-const handleChooseCoin = () => {
-  floatingPanel.value.show = true;
-}
 
 const network1 = ref('');
-const change = (item, data, itemName, itemAccount) => {
-  floatingPanel.value.show = false;
-  network1.value = item;
-  address.value = data;
-  name.value = itemName;
-  account.value = itemAccount;
-}
+
 
 const title = ref('');
 const unit = ref('');
 const address = ref('');
 const orderNumberText = ref('');
-const name = ref('');  // New addition for name
+
 const account = ref('');  // New addition for account
 const blockchaindata = ref([]);
 
@@ -51,10 +41,9 @@ const getBlockchaindata = async () => {
   blockchaindata.value = res.data;
   imgUrl.value = res.data.url;
   account.value = res.data.account;
+  network1.value = res.data.network;
 
 }
-
-
 const rechargeRate = ref(0);
 const rechargeFact = ref(0);
 const uploadRef1 = ref(null);
@@ -116,21 +105,15 @@ const onSubmit = () => {
 
   loadingToast();
   torechargedata.value.network = network1.value;
-  torechargedata.value.blockchain = address.value;
+  torechargedata.value.blockchain = account.value;
   torechargedata.value.image = rechargeImageUrl.value;
   torechargedata.value.order = orderNumberText.value;
+
+  console.log(torechargedata.value)
   recharge(torechargedata.value).then(res => {
     closeToast();
     if (res.code === 1) {
-
-      if (rechargeType.value == "2") {
-        // router.push({ path: '/imageShow', query: { imgUrl: url } })
-        // showSuccessToast('');
-        showSuccessToast(res.msg);
-      } else {
-        window.location.href = res.data.url
-      }
-      //  showSuccessToast(res.msg);
+      showSuccessToast(res.msg);
     } else {
       showFailToast(res.msg);
     }
@@ -169,7 +152,7 @@ onBeforeMount(() => {
     title.value = t("recharge.zfbDeposit")
     unit.value = t("walletrecharge.number")
   } else if (rechargeType.value == "1") {
-    title.value = t("recharge.deposit")
+    title.value = t("recharge.chainDeposit")
     unit.value = t("walletrecharge.number")
   }
 })

@@ -13,9 +13,10 @@ const onClickLeft = () => {
 
 //0=银行卡,1=数字货币,2=支付宝,3= 微信
 const list = [
-   { path: '/bankRecharge',  name: t("recharge.chainDeposit"), icon: 'bitcoin', type: 0 },
+   { path: '/bankRecharge',  name: t("recharge.bankDeposit"), icon: '', type: 0 },
  // { path: '/bankRecharge',  name: t("recharge.chainDeposit"), icon: 'bitcoin', type: 0 },
   { path: '/zhifubaoRecharge',  name: t("recharge.zfbDeposit"), icon: '', type: 2 },
+ // { path: '/walletRecharge',  name: t("recharge.chainDeposit"), icon: 'bitcoin', type: 1 },
   //{ path: '/zhifubaoRecharge', name: t("recharge.wxDeposit"), icon: '', type: 3 },
   // { path: 'bankCardRecharge', name: '银行卡', icon: 'bank-card' },
   { path: '/service', name: t("recharge.manualDeposit"), icon: 'headset-one', type: -1 }
@@ -43,6 +44,7 @@ const list = [
         <img src="@/assets/image/home1/提现.png" style="width: 1.8rem;" v-if="item.type == 0">
         <img src="@/assets/icons/ic_zfb.svg" style="width: 1.8rem;" v-if="item.type == 2">
         <img src="@/assets/icons/ic_wx.svg" style="width: 1.8rem;" v-if="item.type == 3">
+        <img src="@/assets/image/home1/退款订单.png" style="width: 1.8rem;" v-if="item.type == 1">
       </div>
       <div>
         <span>{{ item.name }}</span>

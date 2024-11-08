@@ -430,7 +430,8 @@ export default {
     changeFundsPassword: "修改资金密码",
   },
   recharge: {
-    chainDeposit: "银行卡充值",
+    bankDeposit: "银行卡充值",
+    chainDeposit: "虚拟币充值",
     zfbDeposit: "支付宝充值",
     wxDeposit: "微信充值",
     manualDeposit: "人工充值",
