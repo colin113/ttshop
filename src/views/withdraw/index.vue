@@ -243,11 +243,15 @@ onBeforeMount(() => {
       <div class="flex text-blue-500 justify-between mt-3 mx-3 text-sm">
         <span>
           {{ $t("withdraw.actualAmountReceived") }}{{ price1 == null ? 0 :
-            (extracttype == $t('withdraw.card') ? (price1 * (1 - info.service_charge)).toFixed(2) : price1) }}
+            (extracttype == $t('withdraw.card') ? (price1 * (1 - info.service_charge)).toFixed(2) : (price1 * (1 - info.wallet_service_charge)).toFixed(2)) }}
           {{ moneyUnit }}
         </span>
         <span v-if="extracttype === $t('withdraw.card')">
           {{ $t("withdraw.fee") }}{{ info.service_charge }}
+        </span>
+
+        <span v-if="extracttype === $t('withdraw.blockchain')">
+          {{ $t("withdraw.fee") }}{{ info.wallet_service_charge }}
         </span>
       </div>
       <div class="bg-black mx-3 mt-3 flex justify-center items-center rounded-md ">
