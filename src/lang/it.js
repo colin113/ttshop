@@ -182,7 +182,6 @@ export default {
     title1: "Ogni volta che un amico completa un ordine sulla piattaforma, puoi guadagnare una commissione di ricompensa corrispondente",
     invite: "Ottieni il codice di invito",
     one: "Sede centrale di primo livello",
-    two:"Distribuzione secondaria",
     norecord: "Nessun record per ora",
     name: "Nome:",
     income: "Guadagno:",

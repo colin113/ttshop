@@ -182,7 +182,6 @@ export default {
     title1: "Tant que vos amis complètent une commande sur la plateforme, vous pouvez obtenir une commission de récompense correspondante",
     invite: "Obtenir le code d'invitation",
     one: "Siège de premier niveau",
-    two:"Distribution secondaire",
     norecord: "Pas encore d'enregistrements",
     name: "Nom :",
     income: "Revenus :",

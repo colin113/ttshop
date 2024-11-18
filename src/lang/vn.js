@@ -182,7 +182,6 @@ export default {
     title1: "Chỉ cần bạn bè hoàn thành đơn hàng trên nền tảng, bạn sẽ nhận được hoa hồng thưởng tương ứng",
     invite: "Nhận mã mời",
     one: "Trụ sở cấp 1",
-    two:"Phân phối thứ cấp",
     norecord: "Chưa có bản ghi nào",
     name: "Tên:",
     income: "Thu nhập:",

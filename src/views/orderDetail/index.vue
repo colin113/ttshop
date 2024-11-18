@@ -1,160 +1,175 @@
 <script setup>
-import {useRoute, useRouter} from "vue-router";
-import {orderDetail} from "@/api/index.js";
-import { useI18n } from 'vue-i18n';
-//多语言
-const { t } = useI18n();
-//路由
-const router = useRouter();
-const route = useRoute()
-//返回
-const onClickLeft = () => {
-  router.back();
-};
-//请求参数
-const id = ref({
-  id: "",
-})
-id.value.id = route.query.id
-// console.log(id.value)
+	import {
+		useRoute,
+		useRouter
+	} from "vue-router";
+	import {
+		orderDetail
+	} from "@/api/index.js";
+	import {
+		useI18n
+	} from 'vue-i18n';
+	//多语言
+	const {
+		t
+	} = useI18n();
+	//路由
+	const router = useRouter();
+	const route = useRoute()
+	//返回
+	const onClickLeft = () => {
+		router.back();
+	};
+	//请求参数
+	const id = ref({
+		id: "",
+	})
+	id.value.id = route.query.id
+	// console.log(id.value)
 
-//订单信息
-const getdata = ref({})
-//商品信息
-const product = ref([])
-//物流信息
-const delivery = ref([])
-const delivery_no = ref('')
-//获取请求数据
-const getorderDetail = async () => {
-  const res = await orderDetail(id.value)
-  getdata.value = res.data
-  // console.log(getdata.value)
-  product.value = getdata.value.product
-  // console.log(product.value)
-  delivery.value = res.data.delivery
-  // console.log(delivery.value)
-  delivery_no.value = delivery.value[0]?.delivery_no
-  // console.log(delivery_no.value)
-}
+	//订单信息
+	const getdata = ref({})
+	//商品信息
+	const product = ref([])
+	//物流信息
+	const delivery = ref([])
+	const delivery_no = ref('')
+	//获取请求数据
+	const getorderDetail = async () => {
+		const res = await orderDetail(id.value)
+		getdata.value = res.data
+		// console.log(getdata.value)
+		product.value = getdata.value.product
+		// console.log(product.value)
+		delivery.value = res.data.delivery
+		// console.log(delivery.value)
+		delivery_no.value = delivery.value[0]?.delivery_no
+		// console.log(delivery_no.value)
+	}
 
-//复制函数
-const copy = (textToCopy) => {
-  // 创建一个临时的textarea元素
-  const textarea = document.createElement('textarea');
+	//复制函数
+	const copy = (textToCopy) => {
+		// 创建一个临时的textarea元素
+		const textarea = document.createElement('textarea');
 
-  // 将要复制的文本设置为textarea的值
-  textarea.value = textToCopy;
+		// 将要复制的文本设置为textarea的值
+		textarea.value = textToCopy;
 
-  // 将textarea隐藏
-  textarea.style.position = 'fixed';
-  textarea.style.opacity = 0;
+		// 将textarea隐藏
+		textarea.style.position = 'fixed';
+		textarea.style.opacity = 0;
 
-  // 将textarea添加到DOM中
-  document.body.appendChild(textarea);
+		// 将textarea添加到DOM中
+		document.body.appendChild(textarea);
 
-  // 选择textarea中的文本
-  textarea.select();
+		// 选择textarea中的文本
+		textarea.select();
 
-  // 执行复制命令
-  document.execCommand('copy');
+		// 执行复制命令
+		document.execCommand('copy');
 
-  // 删除textarea元素
-  document.body.removeChild(textarea);
+		// 删除textarea元素
+		document.body.removeChild(textarea);
 
-  showToast('复制成功');
-};
+		showToast('复制成功');
+	};
 
-onMounted(() => {
-  getorderDetail()
-})
+	onMounted(() => {
+		getorderDetail()
+	})
 </script>
 
 <template>
-  <header>
-    <van-nav-bar
-        :title="$t('orderDetail.orderDetail')"
-        :left-text="$t('goback')"
-        left-arrow
-        @click-left="onClickLeft"
-    />
-  </header>
-  <main>
-    <div class="mx-3 mt-3 rounded-md">
-      <!--      商品详情-->
-      <div class="bg-white p-3 rounded-md back_4" >
-<!--        <div class="flex items-center pt-1.5">-->
-<!--          <van-icon size="24" class="mx-3" name="ellipsis"/>-->
-<!--        </div>-->
-        <div class="flex px-3 my-2" v-for="item in product">
-          <div>
-            <van-image
-                width="100"
-                height="100"
-                radius="10px"
-                lazy-load
-                :src="item.image"
-            >
-              <template v-slot:loading>
-                <van-loading type="spinner" size="20"/>
-              </template>
-            </van-image>
-          </div>
-          <div class="ml-3 flex-1">
-            <div>
-            <span class="font-semibold line-clamp_2">
-              {{ item.title }}
-            </span>
-            </div>
-            <div class="text-left mr-3 py-1 mt-5 ">
-              <div class="flex justify-end">
-                <span class="text-neutral-500 text-sm">{{ $t("orderDetail.number") }}</span>
-                <span class="text-neutral-500 text-sm ml-3">x{{ item.product_num }}</span>
-              </div>
-              <div class="flex justify-end">
-                <span class="text-neutral-500 text-sm">{{ $t("orderDetail.price") }}</span>
-                <span class="text-neutral-500 text-sm ml-3">{{ item.total_price }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--      订单详情-->
-      <div class="bg-white p-3 rounded-md back_4 my-3">
-        <div>
-          <div class="flex items-center py-1">
-            <span>{{ $t("orderDetail.orderNumber") }}</span>
-            <span class="font-semibold">{{ getdata.order_sn }}</span>
-            <span class="bg-amber-800 px-3 py-0.5 rounded-md ml-3 text-white text-sm"
-                  @click="copy(getdata.order_sn)">{{ $t("orderDetail.copy") }}</span>
-          </div>
-          <div class="py-1">
-            <span>{{ $t("orderDetail.shippingAddress") }}</span>
-            <span>{{ getdata.user_address }}</span>
-          </div>
-          <div class="py-1">
-            <span>{{ $t("orderDetail.phoneNumber") }}</span>
-            <span>{{ getdata.user_phone }}</span>
-          </div>
-          <div class="py-1">
-            <span>{{ $t("orderDetail.orderTime") }}</span>
-            <span>{{ getdata.createtime }}</span>
-          </div>
-          <!--        <div class="flex justify-between py-1">-->
-          <!--          <span>商品价格:</span>-->
-          <!--          <span>{{ product.product_price }}</span>-->
-          <!--        </div>-->
-          <div class="flex justify-between py-1">
-            <span>{{ $t("orderDetail.totalEarnings") }}</span>
-            <span>{{ getdata.total_profit }}</span>
-          </div>
-          <div class="flex justify-between">
-            <div></div>
-            <div><span>{{ $t("orderDetail.totalPayment") }}</span><span class="ml-3 text-red-500">{{ getdata.total_price }}</span></div>
-          </div>
-        </div>
-        <van-button type="default" @click="router.push({ path: '/transport', query: { id: route.query.id } })">{{ $t("orderDetail.shippingProgress") }}</van-button>
-        <!-- <div class="mx-3 font-semibold text-lg mt-3">
+	<div class="w-[100vw] h-[100vh] bg-[#fff] fixed" style="z-index: -2;"></div>
+	<div class="bg">
+		<img src="@/assets/image/BG.png">
+	</div>
+	<header>
+		<van-nav-bar :title="$t('orderDetail.orderDetail')" :border="false" :left-text="$t('goback')" left-arrow
+			@click-left="onClickLeft" />
+	</header>
+	<main>
+		<div class="mx-3 mt-3 rounded-md">
+			<!--      商品详情-->
+			<div class="bg-white p-3 rounded-md back_4">
+				<!--        <div class="flex items-center pt-1.5">-->
+				<!--          <van-icon size="24" class="mx-3" name="ellipsis"/>-->
+				<!--        </div>-->
+				<div class="flex px-3 my-4 bor" v-for="item in product">
+					<div>
+						<van-image width="100" height="100" radius="10px" lazy-load :src="item.image">
+							<template v-slot:loading>
+								<van-loading type="spinner" size="20" />
+							</template>
+						</van-image>
+					</div>
+					<div class="ml-3 flex-1">
+						<div>
+							<span class="">
+								{{ item.title }}
+							</span>
+						</div>
+						<div class="text-left mr-3 py-1 mt-5 ">
+							<div class="flex justify-end">
+								<span class="text-neutral-500 text-sm">{{ $t("orderDetail.number") }}</span>
+								<span class="text-neutral-500 text-sm ml-3">x{{ item.product_num }}</span>
+							</div>
+							<div class="flex justify-end">
+								<span class="text-neutral-500 text-sm">{{ $t("orderDetail.price") }}</span>
+								<span class="text-neutral-500 text-sm ml-3">{{ item.total_price }}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--      订单详情-->
+			<div class="bg-white p-3 rounded-md back_4 my-3">
+				<div>
+					<div class="flex items-center justify-between py-2">
+						<div class="text-sm">{{ $t("orderDetail.orderNumber") }}
+						</div>
+						<div>
+							<span class="text-sm">{{ getdata.order_sn }}</span>
+							<span class="bg-[#F2FAFA] text-[#009996] px-3 py-0.5 rounded-md ml-3 text-sm"
+								@click="copy(getdata.order_sn)">{{ $t("orderDetail.copy") }}</span>
+						</div>
+					</div>
+					<div class="py-2 flex justify-between">
+						<div class="w-[50%] text-sm">
+							{{ $t("orderDetail.shippingAddress") }}
+						</div>
+
+						<div class="text-sm text-right">{{ getdata.user_address }}</div>
+					</div>
+					<div class="py-2 text-sm flex items-center justify-between">
+						<div class="w-[30%] text-sm">{{ $t("orderDetail.phoneNumber") }}</div>
+						<div>{{ getdata.user_phone }}</div>
+					</div>
+					<div class="py-2 text-sm flex items-center justify-between">
+						<div class="w-[30%] text-sm">{{ $t("orderDetail.orderTime") }}</div>
+						<div class="text-right">{{ getdata.createtime }}
+
+						</div>
+					</div>
+					<!--        <div class="flex justify-between py-1">-->
+					<!--          <span>商品价格:</span>-->
+					<!--          <span>{{ product.product_price }}</span>-->
+					<!--        </div>-->
+					<div class="text-sm flex items-center justify-between py-2">
+						<div class="w-[30%] text-sm">{{ $t("orderDetail.totalEarnings") }}</div>
+						<div class="text-right">{{ getdata.total_profit }}</div>
+					</div>
+					<div class="text-sm flex items-center justify-between py-2">
+						<div class="w-[30%] text-sm">{{ $t("orderDetail.totalPayment") }}</div>
+						<div class="ml-3 text-red-500">{{ getdata.total_price }}</div>
+					</div>
+				</div>
+				<div class="flex justify-end py-2">
+					<van-button type="default" class="text-[#AEAEAE] rounded-[2rem]"
+						@click="router.push({ path: '/transport', query: { id: route.query.id } })">{{ $t("orderDetail.shippingProgress") }}</van-button>
+				</div>
+
+				<!-- <div class="mx-3 font-semibold text-lg mt-3">
           <h3>{{ $t("orderDetail.shippingProgress") }}</h3>
           <p>{{ $t("orderDetail.trackingNumber") }}{{ delivery_no }}</p>
         </div>
@@ -166,11 +181,43 @@ onMounted(() => {
             </div>
           </van-step>
         </van-steps> -->
-      </div>
-    </div>
-  </main>
+			</div>
+		</div>
+	</main>
 </template>
 
 <style scoped lang="scss">
+	:deep(.van-nav-bar) {
+		background-color: transparent !important;
+	}
 
+	// :deep(.van-nav-bar__title),
+	// :deep(.van-nav-bar__left .van-icon),
+	// :deep(.van-nav-bar__text) {
+	// 	color: #141A52 !important;
+	// }
+
+	.bg {
+		width: 100%;
+		height: 268px;
+		background: linear-gradient(180deg, #40A295 0%, #069895 35%, #fff);
+		border-radius: 0px 0px 0px 0px;
+		position: absolute;
+		top: -2rem;
+		z-index: -1;
+	}
+
+	* {
+		font-family: Poppins !important;
+		--van-button-default-color: #AEAEAE !important;
+		--van-button-default-border-color: #CBCBCB;
+	}
+
+	.back_4 {
+		box-shadow: 0px 10px 13px 0 rgba(0, 0, 0, 0.08);
+	}
+
+	.bor {
+		border-bottom: 1px solid #dedede;
+	}
 </style>
