@@ -156,6 +156,7 @@
 		}
 	);
 
+<<<<<<< HEAD
 	const setPageStatus = (statusValue) => {
 		isShowEmailLoginBtn.value = false
 		//status=1 正常登录进去   -1 不存在  0审核中  -2  审核不通过
@@ -177,6 +178,23 @@
 			titleText.value = t("code.title")
 		}
 	};
+=======
+// 路由监听，重新加载数据
+watch(
+  () => route.query.status,
+  (newStatus) => {
+    status.value = newStatus || -1;
+    //statu=1 正常登录进去   -1 不存在  0审核中  -2  审核不通过
+    if (status.value === -1) {
+       hideAll.value = true;
+      //hideAll.value = false;
+    } else {
+      hideAll.value = false;
+      setPageStatus(status.value)
+    }
+  }
+);
+>>>>>>> main
 
 	const startAutoRefresh = () => {
 		timeoutId = setTimeout(() => {

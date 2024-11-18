@@ -42,6 +42,7 @@
 		duration: 0
 	});
 
+<<<<<<< HEAD
 	if (paramValue) {
 		third(query).then(res => {
 			loading.close();
@@ -75,6 +76,36 @@
 	} else {
 		loading.close();
 	}
+=======
+if (paramValue) {
+  third(query).then(res => {
+    loading.close();
+    //status  =1 正常登录进去   -1 不存在  0审核中  -2  审核不通过
+    if (res.code == 0 || res.data.status == 0) {
+      localStorage.setItem('data', paramValue);
+      // router.push('/code')
+      if (res.data == null) {
+        res.data = {status: -1}
+      }
+      router.push({path: '/code', query: {status: res.data.status}})
+    } else {
+      userStore.token = res.data.merinfo.token;
+      if (userStore.token) {
+        if (path) {
+          router.push(path);
+        } else {
+          router.push('/home');
+        }
+      }
+    }
+  }).catch(err=>{
+    router.push({path: '/code', query: {status: -1}})
+  })
+} else {
+  loading.close();
+  //window.location.href = 'https://www.tiktokh.shop'
+}
+>>>>>>> main
 
 	onMounted(() => {
 

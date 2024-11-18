@@ -54,6 +54,7 @@
 		account.value = itemAccount;
 	}
 
+<<<<<<< HEAD
 	const title = ref('');
 	const unit = ref('');
 	const address = ref('');
@@ -73,6 +74,30 @@
 			account.value = blockchaindata.value[0]?.account; // Set initial account
 		}
 	}
+=======
+const title = ref('');
+const unit = ref('');
+const address = ref('');
+const orderNumberText = ref('');
+const name = ref('');  // New addition for name
+const account = ref('');  // New addition for account
+const blockchaindata = ref([]);
+
+const getrechargedata = ref({
+  type: 2,
+});
+
+const getBlockchaindata = async () => {
+  const res = await getBlockchain(getrechargedata.value);
+  blockchaindata.value = res.data;
+  imgUrl.value = res.data.url;
+  if (blockchaindata.value.length > 0) {
+    address.value = blockchaindata.value[0]?.blockchain;
+    name.value = blockchaindata.value[0]?.name; // Set initial name
+    account.value = blockchaindata.value[0]?.account; // Set initial account
+  }
+}
+>>>>>>> main
 
 
 	const rechargeRate = ref(0);
@@ -182,6 +207,7 @@
 		});
 	}
 
+<<<<<<< HEAD
 	onBeforeMount(() => {
 		getBlockchaindata();
 		requestRate();
@@ -196,6 +222,22 @@
 			unit.value = t("walletrecharge.number")
 		}
 	})
+=======
+onBeforeMount(() => {
+  getBlockchaindata();
+  requestRate();
+  if (rechargeType.value == "0") {
+    title.value = t("recharge.bankDeposit")
+    unit.value = t("withdraw.amount")
+  } else if (rechargeType.value == "2") {
+    title.value = t("recharge.zfbDeposit")
+    unit.value = t("walletrecharge.number")
+  } else {
+    title.value = t("recharge.wxDeposit")
+    unit.value = t("walletrecharge.number")
+  }
+})
+>>>>>>> main
 </script>
 
 <template>

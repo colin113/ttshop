@@ -175,11 +175,19 @@ export const removeProduct = (data) => {
 };
 //充值方式
 export const getBlockchain = (data) => {
+<<<<<<< HEAD
 	return service({
 		url: "/merchant/merchant/getBlockchain",
 		method: "get",
 		params: data
 	});
+=======
+  return service({
+    url: "/merchant/merchant/getBlockchain",
+    method: "get",
+    params: data,
+  });
+>>>>>>> main
 };
 //银行卡充值
 export const recharge = (data) => {

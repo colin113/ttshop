@@ -216,6 +216,7 @@
 </script>
 
 <template>
+<<<<<<< HEAD
 	<view class="bg"></view>
 	<header>
 		<van-nav-bar :title="$t('withdraw.withdrawal')" :border="false" :left-text="$t('goback')" left-arrow
@@ -246,6 +247,87 @@
 					:rules="[{ required: true, message: $t('withdraw.enterCurrencyType') }]" />
 			</div>
 			<div v-if="extracttype === $t('withdraw.blockchain')" class="mt-6">
+=======
+  <header>
+    <van-nav-bar :title="$t('withdraw.withdrawal')" :left-text="$t('goback')" left-arrow @click-left="onClickLeft">
+      <template #right>
+        <span @click="router.push('/withdrawRecord')" class="text-white">{{ $t("withdraw.withdrawalRecords") }}</span>
+      </template>
+    </van-nav-bar>
+  </header>
+  <main class="mt-3 mx-3">
+    <van-form @submit="onSubmit" class="bg-white">
+      <div>
+        <van-cell :title="$t('withdraw.withdrawalMethod')" center style="font-size: 20px" />
+        <van-field :placeholder="$t('withdraw.enterWithdrawalMethod')" v-model="extracttype" @focus="showtype = true"
+          readonly :rules="[{ required: true, message: $t('withdraw.enterWithdrawalMethod') }]" />
+      </div>
+      <div>
+        <van-cell :title="$t('withdraw.selectCurrency')" center style="font-size: 20px" />
+        <van-field :placeholder="$t('withdraw.enterCurrencyType')" v-model="currencytype" @focus="showcurrency = true"
+          readonly :rules="[{ required: true, message: $t('withdraw.enterCurrencyType') }]" />
+      </div>
+      <div v-if="extracttype === $t('withdraw.blockchain')">
+        <van-cell :title="$t('withdraw.blockchainNetwork')" center style="font-size: 20px" />
+        <van-field :placeholder="$t('withdraw.enterBlockchainNetwork')" v-model="networktype"
+          @focus="shownetwork = true" readonly
+          :rules="[{ required: true, message: $t('withdraw.enterBlockchainNetwork') }]" />
+      </div>
+      <div v-if="extracttype === $t('withdraw.card')">
+        <van-cell :title="$t('withdraw.fullName')" center style="font-size: 20px" />
+        <van-field :placeholder="$t('withdraw.enterFullName')" v-model="withdrawQuery.real_name"
+          :rules="[{ required: true, message: $t('withdraw.enterFullName') }]" />
+      </div>
+      <div v-if="extracttype === $t('withdraw.card')">
+        <van-cell :title="$t('withdraw.bankName')" center style="font-size: 20px" />
+        <van-field :placeholder="$t('withdraw.enterBankName')" v-model="withdrawQuery.bank_name"
+          :rules="[{ required: true, message: $t('withdraw.enterBankName') }]" />
+      </div>
+      <div v-if="extracttype === $t('withdraw.blockchain')">
+        <van-cell :title="$t('withdraw.blockchainAddress')" center style="font-size: 20px" />
+        <van-field :placeholder="$t('withdraw.enterBlockchainAddress')" v-model="blockchaintype"
+          :rules="[{ required: true, message: $t('withdraw.enterBlockchainAddress') }]" />
+      </div>
+      <div v-if="extracttype === $t('withdraw.card')">
+        <van-cell :title="$t('withdraw.bankCardNumber')" center style="font-size: 20px" />
+        <van-field :placeholder="$t('withdraw.enterBankCardNumber')" v-model="withdrawQuery.bank_card"
+          :rules="[{ required: true, message: $t('withdraw.enterBankCardNumber') }]" />
+      </div>
+      <div>
+        <van-cell :title="$t('withdraw.amount')" center style="font-size: 20px" />
+        <van-field :placeholder="$t('withdraw.enterAmount')" v-model="price1" @input="changePrice"
+          :rules="[{ required: true, message: $t('withdraw.enterAmount') }, { validator: validator1, message: $t('withdraw.nozero') }]">
+          <template #button>
+            <span class="text-blue-500" @click="price1 = ((info.balance * rechargeRate).toFixed(2))">{{
+              $t("withdraw.all") }}</span>
+          </template>
+        </van-field>
+      </div>
+      <div class="text-sm mt-3 text-green-500 mx-3">{{ $t("withdraw.currentBalance") }}
+        <span>{{ info.balance }}</span>
+        USDT ≈
+        <span>{{ (info.balance * rechargeRate).toFixed(2) }}</span>
+        CNY
+      </div>
+      <div class="flex text-blue-500 justify-between mt-3 mx-3 text-sm">
+        <span>
+          {{ $t("withdraw.actualAmountReceived") }}{{ price1 == null ? 0 :
+            (extracttype == $t('withdraw.card') ? (price1 * (1 - info.service_charge)).toFixed(2) : (price1 * (1 - info.wallet_service_charge)).toFixed(2)) }}
+          {{ moneyUnit }}
+        </span>
+        <span v-if="extracttype === $t('withdraw.card')">
+          {{ $t("withdraw.fee") }}{{ info.service_charge }}
+        </span>
+
+        <span v-if="extracttype === $t('withdraw.blockchain')">
+          {{ $t("withdraw.fee") }}{{ info.wallet_service_charge }}
+        </span>
+      </div>
+      <div class="bg-black mx-3 mt-3 flex justify-center items-center rounded-md ">
+        <van-button native-type="submit">{{ $t("withdraw.submit") }}</van-button>
+      </div>
+    </van-form>
+>>>>>>> main
 
 				<van-field class="rounded-[0.5rem]" input-align="right" :label="$t('withdraw.blockchainNetwork')"
 					label-width="10rem" label-class="bold" :placeholder="$t('withdraw.enterBlockchainNetwork')"
