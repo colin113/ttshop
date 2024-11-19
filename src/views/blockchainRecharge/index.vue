@@ -27,6 +27,7 @@ import copy from '@/assets/image/copy.png'
 
 	const copyFun =  (text)=>{
 		navigator.clipboard.writeText(text)
+    showSuccessToast('复制成功');
 	}
 
 const router = useRouter();
@@ -39,8 +40,6 @@ rechargeType.value = route.query.recharge_type
 const onClickLeft = () => {
 	router.back();
 };
-
-const rechargeRate = ref(0)
 
 
 const rechargeQuery = ref({

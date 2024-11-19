@@ -31,6 +31,7 @@
 
 	const copyFun =  (text)=>{
 		navigator.clipboard.writeText(text)
+    showSuccessToast('复制成功');
 	}
 	const {
 		t

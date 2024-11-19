@@ -87,16 +87,10 @@
 		// },
 	];
 	const networktype = ref('')
-	const blockchaintype = ref('')
 	const onSelectnetwork = (item) => {
 		shownetwork.value = false;
 		console.log(item)
 		networktype.value = item.name
-		if (networktype.value === 'USDT-TRC20') {
-			blockchaintype.value = ''
-		} else {
-			blockchaintype.value = ''
-		}
 	};
 
 
@@ -169,7 +163,7 @@
 			}
 			withdrawQuery.value.currency_type = currencytype.value
 			withdrawQuery.value.network = networktype.value
-			withdrawQuery.value.blockchain = blockchaintype.value
+			withdrawQuery.value.blockchain = blockchain.value
 		} else {
 			showFailToast(t("over"))
 		}
@@ -275,7 +269,7 @@
 			</div>
 			<div v-if="extracttype === $t('withdraw.blockchain')" class="mt-6">
 				<van-field class="rounded-[0.5rem]" input-align="right" :label="$t('withdraw.blockchainAddress')"
-					:placeholder="$t('withdraw.enterBlockchainAddress')" v-model="withdrawQuery.blockchaintype"
+					:placeholder="$t('withdraw.enterBlockchainAddress')" v-model="withdrawQuery.blockchain"
 					label-width="10rem" label-class="bold"
 					:rules="[{ required: true, message: $t('withdraw.enterBlockchainAddress') }]" />
 
