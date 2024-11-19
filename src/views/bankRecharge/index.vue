@@ -28,6 +28,10 @@
 		useUserStore
 	} from "@/store/modules/user.js";
 	import copy from '@/assets/image/copy.png'
+
+	const copyFun =  (text)=>{
+		navigator.clipboard.writeText(text)
+	}
 	const {
 		t
 	} = useI18n();
@@ -222,7 +226,7 @@
 				</div>
 				<div class="bg-white rounded-md  mb-[1.1rem] h-[3.5rem] flex items-center py-3">
 					<van-field class="mh rounded-[0.5rem]" :label="$t('walletrecharge.Card_Number')" disabled
-						label-width="8rem" input-align="right" v-model="account" :right-icon="copy" />
+						label-width="8rem" input-align="right" v-model="account" :right-icon="copy" @click-right-icon="copyFun(account)"/>
 				</div>
 				<div class=" py-3 mb-[1.1rem]">
 					<div class="flex mt-[.2rem]">

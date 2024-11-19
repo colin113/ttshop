@@ -37,8 +37,8 @@
 
 <template>
 	<header>
-		<van-nav-bar :title="$t('setPaypwd.setPaymentPassword')" :left-text="$t('goback')" :border="false" left-arrow
-			@click-left="onClickLeft" />
+		<van-nav-bar :title="$t('setPaypwd.setPaymentPassword')" safe-area-inset-top :left-text="$t('goback')"
+			:border="false" left-arrow @click-left="onClickLeft" />
 	</header>
 	<main>
 		<van-form @submit="onSubmit(setPayQuery)" class="mt-10">
