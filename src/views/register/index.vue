@@ -30,11 +30,27 @@ const Goto = () => {
 //定义选项卡内容
 const actions = ref([]);
 //从后端拿取默认语言,并且渲染语言列表
-const langList = ref([]);
+const langList = ref([{
+		chinese_name: "英语",
+		createtime: 1712824643,
+		file_name: "en",
+		id: 2,
+		is_default: 1,
+		language_name: "English",
+		status: 1
+	}, {
+		"id": 1,
+		"language_name": "中文",
+		"chinese_name": "中文",
+		"file_name": "zh-CN",
+		"status": 1,
+		"is_default": 0,
+		"createtime": 1712824643
+	}])
 const actionList = ref([]);
 const defautlanguage = () => {
-  languageList({ page: 1, limit: 10 }).then((res) => {
-    langList.value = res.data.list;
+  // languageList({ page: 1, limit: 10 }).then((res) => {
+  //   langList.value = res.data.list;
     //提取里面属性组成新的数组渲染选项卡
     actionList.value = langList.value.map((item) => ({
       name: item.language_name,
@@ -55,7 +71,7 @@ const defautlanguage = () => {
       });
       localStorage.setItem("hasExecutedFunction", "true");
     }
-  });
+  // });
 };
 
 //请求参数
@@ -218,20 +234,21 @@ onMounted(() => {
 
 <template>
   <div class="page text-white">
-    <header>
-      <div class="mx-3 flex justify-between items-center mt-3">
+    <header style="position: relative;z-index: 5;">
+      <div class="mx-3  flex justify-between items-center mt-3">
         <span class="ml-3 pt-0.5">
           <icon-park name="left" size="1.6rem" @click="onClickLeft" />
         </span>
+        <span class="ml-3 pt-1  text-black">{{ $t("login.register")
+					}}</span>
         <span class="ml-3 pt-0.5">
-          <icon-park name="earth" size="1.6rem" @click="Goto()" />
-        </span>
+					<icon-park name="earth" size="1.6rem" @click="Goto()" />
+				</span>
       </div>
     </header>
     <main>
-      <div class="flex justify-center items-center flex-col mt-20">
-        <!--        <img class="w-40" src="https://shop.zcm.bio/www/png/name-93a01558.png" alt="">-->
-        <div class="mt-28">
+      <!-- <div class="flex justify-center items-center flex-col mt-20">
+       <div class="mt-28">
           <span class="font-semibold text-5xl text-black">SHOP</span>
         </div>
       </div>
@@ -249,7 +266,7 @@ onMounted(() => {
                 " @click="showLogin = $t('login.login')">{{ $t("login.login") }}
           </van-button>
         </div>
-      </div>
+      </div> -->
       <!--登录-->
       <transition name="van-slide-up">
         <div v-if="showLogin === $t('login.login')" class="h-3/5 bg-white rounded-t-2xl fixed bottom-0"
@@ -299,10 +316,26 @@ onMounted(() => {
       <!--注册-->
       <transition name="van-slide-up">
         <div v-if="showLogin === $t('login.register')"
-          class="h-5/6 bg-white overflow-y-auto rounded-t-2xl fixed bottom-0 pb-6" style="width: 100vw">
+          class="overflow-y-auto zc mx-3 rounded-t-2xl pb-6" style="width:calc(100vw - 1.5rem);height:calc(100% - 6rem);border-radius: 0;background-color: rgb(248, 248, 248);">
           <div>
-            <van-form class="mx-3 mt-6" @submit="onSubmit2()">
-              <div class="mx-3">
+            <van-form class="mt-6" @submit="onSubmit2()">
+              <div class="mx-3 item-ts" style="height: 6.57rem;">
+								<div class="text-black mb-3">
+									<span style="color:var(--van-field-required-mark-color)">*</span>{{
+									$t("login.storeLogo") }}
+									<!-- stop Logo -->
+								</div>
+								<div class="right">
+									<van-uploader ref="uploadRef1" v-model="fileList1" :show-upload="showUpload1"
+										:max-count="1" preview-size="4rem" upload-icon="plus" :after-read="afterRead1">
+										<template #preview-cover="{ file }">
+											<!--            <div class="preview-cover van-ellipsis">{{ file.name }}</div>-->
+										</template>
+									</van-uploader>
+								</div>
+								<!-- npm install vue-qrcode --save -->
+							</div>
+              <!-- <div class="mx-3">
                 <div class="text-black mb-3">
                   {{ $t("login.storeLogo") }}
                 </div>
@@ -310,12 +343,18 @@ onMounted(() => {
                   <van-uploader ref="uploadRef1" v-model="fileList1" :after-read="afterRead1" :max-count="1"
                     :show-upload="showUpload1" upload-icon="plus">
                     <template #preview-cover="{ file }">
-                      <!--            <div class="preview-cover van-ellipsis">{{ file.name }}</div>-->
                     </template>
                   </van-uploader>
                 </div>
-              </div>
-              <div class="mx-3">
+              </div> -->
+              <div class="mx-3 item h42">
+								<van-field class="rounded-lg" required v-model="query.mer_name"
+									:label="$t('login.storeName')" input-align="right" label-width="7rem"
+									:placeholder="$t('login.enterStorename')"
+									:rules="[{ required: true, message: $t('login.enterStorename') }]" />
+							</div>
+
+              <!-- <div class="mx-3">
                 <div class="text-black mb-3">
                   {{ $t("login.storeName") }}
                 </div>
@@ -324,8 +363,14 @@ onMounted(() => {
                     { required: true, message: $t('login.enterStorename') },
                   ]" class="border border-gray-500 border-dotted rounded-lg" />
                 </div>
-              </div>
-              <div class="mx-3">
+              </div> -->
+              <div class="mx-3 item h42">
+								<van-field label-width="8rem" class="rounded-lg" required v-model="query.mer_address"
+									:label="$t('login.storeAddress')" input-align="right"
+									:placeholder="$t('login.enterStoreAddress')"
+									:rules="[{ required: true, message: $t('login.enterStoreAddress') }]" />
+							</div>
+              <!-- <div class="mx-3">
                 <div class="text-black my-3">
                   {{ $t("login.storeAddress") }}
                 </div>
@@ -337,8 +382,15 @@ onMounted(() => {
                     },
                   ]" class="border border-gray-500 border-dotted rounded-lg" />
                 </div>
-              </div>
-              <div class="mx-3">
+              </div> -->
+              <div class="mx-3 item h42">
+								<van-field label-width="7rem" class="rounded-lg" required v-model="query.country"
+									:label="$t('login.country')" input-align="right"
+									:placeholder="$t('login.enterCountry')"
+									:rules="[{ required: true, message: $t('login.enterCountry') }]" />
+							</div>
+
+              <!-- <div class="mx-3">
                 <div class="text-black my-3">
                   {{ $t("login.country") }}
                 </div>
@@ -347,8 +399,14 @@ onMounted(() => {
                     { required: true, message: $t('login.enterCountry') },
                   ]" class="border border-gray-500 border-dotted rounded-lg" />
                 </div>
-              </div>
-              <div class="mx-3">
+              </div> -->
+              <div class="mx-3 item h42">
+								<van-field label-width="9rem" type="number" class="rounded-lg" required v-model="query.mer_phone"
+									:label="$t('login.phoneNumber')" input-align="right"
+									:placeholder="$t('login.uploadPhoneNumber')"  :maxlength="11"
+									:rules="[{ required: true, message: $t('login.uploadPhoneNumber') }]" />
+							</div>
+              <!-- <div class="mx-3">
                 <div class="text-black my-3">
                   {{ $t("login.phoneNumber") }}
                 </div>
@@ -360,8 +418,14 @@ onMounted(() => {
                     },
                   ]" class="border border-gray-500 border-dotted rounded-lg" />
                 </div>
-              </div>
-              <div class="mx-3">
+              </div> -->
+              <div class="mx-3 item h42">
+								<van-field label-width="7rem" class="rounded-lg" required v-model="query.real_name"
+									:label="$t('login.realName')" input-align="right"
+									:placeholder="$t('login.enterRealName')"
+									:rules="[{ required: true, message: $t('login.enterRealName') }]" />
+							</div>
+              <!-- <div class="mx-3">
                 <div class="text-black my-3">
                   {{ $t("login.realName") }}
                 </div>
@@ -370,8 +434,14 @@ onMounted(() => {
                     { required: true, message: $t('login.enterRealName') },
                   ]" class="border border-gray-500 border-dotted rounded-lg" />
                 </div>
-              </div>
-              <div class="mx-3">
+              </div> -->
+              <div class="mx-3 item h42">
+								<van-field label-width="7rem" class="rounded-lg" required v-model="query.mer_email"
+									:label="$t('login.email')" input-align="right" :placeholder="$t('login.enterEmail')"
+									:rules="[{ required: true, message: $t('login.enterEmail') }]" />
+							</div>
+
+              <!-- <div class="mx-3">
                 <div class="text-black my-3">
                   {{ $t("login.email") }}
                 </div>
@@ -380,8 +450,16 @@ onMounted(() => {
                     { required: true, message: $t('login.enterEmail') },
                   ]" class="border border-gray-500 border-dotted rounded-lg" />
                 </div>
-              </div>
-              <div class="mx-3">
+              </div> -->
+              <div class="mx-3 item h42">
+								<van-field label-width="10rem" class="rounded-lg" required v-model="query.password"
+									:label="$t('newword.password')" input-align="right"
+									:placeholder="$t('newword.enterPassword')"
+									:rules="[{ required: true, message: $t('newword.enterPassword') }]" />
+							</div>
+
+
+              <!-- <div class="mx-3">
                 <div class="text-black my-3">
                   {{ $t("newword.password") }}
                 </div>
@@ -390,8 +468,14 @@ onMounted(() => {
                     { required: true, message: $t('newword.enterPassword') },
                   ]" class="border border-gray-500 border-dotted rounded-lg" />
                 </div>
-              </div>
-              <div class="mx-3">
+              </div> -->
+              <div class="mx-3 item h42">
+								<van-field label-width="11.5rem" class="rounded-lg" required v-model="query.repassword"
+									:label="$t('newword.rePassword')" input-align="right"
+									:placeholder="$t('newword.reEnterPassword')"
+									:rules="[{ required: true, message: $t('newword.reEnterPassword') }]" />
+							</div>
+              <!-- <div class="mx-3">
                 <div class="text-black my-3">
                   {{ $t("newword.rePassword") }}
                 </div>
@@ -400,44 +484,50 @@ onMounted(() => {
                     { required: true, message: $t('newword.reEnterPassword') },
                   ]" class="border border-gray-500 border-dotted rounded-lg" />
                 </div>
-              </div>
-              <div class="mx-3">
-                <div class="text-black my-3">
-                  {{ $t("login.idCardUpload") }}
-                </div>
-                <div class="text-black flex justify-between">
-                  <div class="flex flex-col justify-center items-center">
-                    <!--                    <van-uploader class="" :multiple="true" v-model="fireList1" :after-read="afterRead1"-->
-                    <!--                                  :max-count="1"/>-->
-                    <van-uploader ref="uploadRef2" v-model="fileList2" :after-read="afterRead2" :max-count="1"
-                      :show-upload="showUpload2" upload-icon="plus">
-                      <template #preview-cover="{ file }">
-                        <!--            <div class="preview-cover van-ellipsis">{{ file.name }}</div>-->
-                      </template>
-                    </van-uploader>
-                    <div class="mt-3">
-                      <span class="text-gray-600">{{
-                        $t("login.idCardFront")
-                      }}</span>
-                    </div>
-                  </div>
-                  <div class="flex flex-col justify-center items-center">
-                    <!--                    <van-uploader class="" :multiple="true" :after-read="afterRead2" v-model="fireList2"-->
-                    <!--                                  :max-count="1"/>-->
-                    <van-uploader ref="uploadRef3" v-model="fileList3" :after-read="afterRead3" :max-count="1"
-                      :show-upload="showUpload3" upload-icon="plus">
-                      <template #preview-cover="{ file }">
-                        <!--            <div class="preview-cover van-ellipsis">{{ file.name }}</div>-->
-                      </template>
-                    </van-uploader>
-                    <div class="mt-3">
-                      <span class="text-gray-600">{{
-                        $t("login.idCardback")
-                      }}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </div> -->
+              <div class="mx-3 item flex-column" style="padding-bottom: .5rem;">
+								<div class="text-black my-3">
+									<span style="color:var(--van-field-required-mark-color)">*</span> {{
+									$t("login.idCardUpload") }}
+								</div>
+								<div class="text-black flex justify-between imgs">
+									<div class="flex flex-col justify-center items-center">
+										<!--                    <van-uploader class="" :multiple="true" v-model="fireList1" :after-read="afterRead1"-->
+										<!--                                  :max-count="1"/>-->
+										<van-uploader ref="uploadRef2" v-model="fileList2" :show-upload="showUpload2"
+											:max-count="1" upload-icon="plus" :after-read="afterRead2"
+											:preview-size="['10rem', '6rem']">
+											<img src="@/assets/image/login/front.png"
+												style="height: 6rem;width: 10rem;" />
+											<template #preview-cover="{ file }">
+
+											</template>
+										</van-uploader>
+										<div class="mt-3">
+											<span class="text-gray-600" style="color: #AEAEAE;">{{
+												$t("login.idCardFront") }}</span>
+										</div>
+									</div>
+									<div class="flex flex-col justify-center items-center">
+										<!--                    <van-uploader class="" :multiple="true" :after-read="afterRead2" v-model="fireList2"-->
+										<!--                                  :max-count="1"/>-->
+										<van-uploader ref="uploadRef3" v-model="fileList3" :show-upload="showUpload3"
+											:max-count="1" upload-icon="plus" :preview-size="['10rem', '6rem']"
+											:after-read="afterRead3">
+											<img src="@/assets/image/login/back.png"
+												style="height: 6rem;width: 10rem;" />
+											<template #preview-cover="{ file }">
+												<!--            <div class="preview-cover van-ellipsis">{{ file.name }}</div>-->
+											</template>
+										</van-uploader>
+										<div class="mt-3">
+											<span class="text-gray-600" style="color: #AEAEAE;">{{
+												$t("login.idCardback") }}</span>
+										</div>
+									</div>
+
+								</div>
+							</div>
               <!--<div class="mx-3">-->
               <!--  <div class="text-black my-3">-->
               <!--    {{ $t("login.loginPassword") }}-->
@@ -479,10 +569,16 @@ onMounted(() => {
                     < !-- &lt; ! & ndash;
                   }}</span>&ndash;&gt;-->
               <!--</div>-->
-              <div class="bg-black mx-3 h-10 rounded-lg flex justify-center items-center text-white mt-6">
+              <!-- <div class="bg-black mx-3 h-10 rounded-lg flex justify-center items-center text-white mt-6">
                 <van-button native-type="submit">
                   {{ $t("login.register") }}</van-button>
-              </div>
+              </div> -->
+              <div class="mx-3 rounded-lg justify-center items-center text-white mt-6"
+								style="padding: 0 1rem;">
+								<van-button native-type="submit"
+									style="background-color: #009996;height: 4rem;border-radius: 6px 6px 6px 6px;"> {{
+									$t("login.register") }}</van-button>
+							</div>
             </van-form>
           </div>
         </div>
@@ -493,21 +589,144 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-.van-cell {
-  padding: 10px 0 10px 10px;
-}
+.page {
+		height: 100vh;
+		overflow: hidden;
+		--van-field-input-text-color: #fff;
+	}
 
-:deep(.van-uploader__upload) {
-  margin: 0;
-}
+	.van-cell {
+		padding: 10px 0;
+	}
 
-.van-button--default {
-  height: 100%;
-  width: 100%;
-  color: white;
-  background-color: black;
-  border: 0 solid white;
-}
+	:deep(.van-uploader__upload) {
+		margin: 0;
+	}
+
+	.van-button--default {
+		height: 100%;
+		width: 100%;
+		color: white;
+		background-color: black;
+		border: 0 solid white;
+	}
+
+	.rounded-lg {
+		margin: 0;
+	}
+
+	.bg {
+		width: 100vw;
+		height: 100vh;
+		position: fixed;
+		top: 0;
+		z-index: -1;
+		bottom: 0;
+	}
+
+	:deep(.van-nav-bar) {
+		background-color: #f8f8f8 !important;
+	}
+
+	:deep(.van-nav-bar__left) {
+
+		.van-icon,
+		.van-nav-bar__text {
+			color: #000 !important;
+		}
+	}
+
+	.h42 {
+		// height: 3rem;
+	}
+
+	.flex-column {
+		flex-direction: column;
+		align-items: flex-start !important;
+
+		.imgs {
+			width: 100%;
+		}
+	}
+
+	.item-ts {
+		background-color: #fff;
+		padding: 0 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-radius: 6px;
+		margin-bottom: 1.2rem;
+
+		:deep(.van-uploader__upload) {
+			border-radius: 100%;
+			height: 4rem;
+			width: 4rem;
+			background: #D9F0EF;
+
+			i {
+				color: #009996;
+			}
+		}
+
+		// :deep(.van-uploader__preview) {
+		// 	// border-radius: 100%;
+		// 	height: 4rem;
+		// 	width: 4rem;
+		// 	overflow: hidden;
+		// 	margin: 0;
+
+		// }
+	}
+
+	.item {
+		background-color: #fff;
+		padding: 0 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-radius: 6px;
+		margin-bottom: 1.2rem;
+		min-height: 4rem;
+
+		>.right {
+			display: flex;
+			align-items: center;
+		}
+
+		:deep(.van-field__error-message) {
+			text-align: right;
+		}
+	}
+
+
+
+	.login {
+		:deep(.van-cell) {
+			background-color: transparent;
+			border-radius: 5px 5px 5px 5px;
+			border: 1px solid #FFFFFF;
+			padding-left: 1rem;
+		}
+	}
+
+	.btn {
+		height: 3.2rem;
+		border-radius: 5px 5px 5px 5px;
+	}
+
+	* {
+		--van-field-input-text-color: #181818;
+		--van-field-input-text-color: #fff
+	}
+	.zc{
+		*{
+			--van-field-input-text-color:#181818
+		}
+	}
+  .page{
+    height: auto !important;
+  }
 </style>
 
 <style></style>

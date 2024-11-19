@@ -579,6 +579,7 @@ export default {
 		uploadBanner: "Upload Banner",
 		service: "Customer Service",
 		code: "Invitation code",
+		emailLogin: "Email Login",
 	},
 	code: {
 		title: " Internal invitation only currently supported",

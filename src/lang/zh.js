@@ -579,6 +579,7 @@ export default {
 		uploadBanner: "上传横幅",
 		service: "客服",
 		code: "邀请码",
+		emailLogin: "邮箱登录",
 	},
 	code: {
 		title: "目前只支持内部邀请",
