@@ -24,6 +24,12 @@ import {
 	computed,
 	onBeforeMount
 } from 'vue';
+import copy from '@/assets/image/copy.png'
+
+	const copyFun =  (text)=>{
+		navigator.clipboard.writeText(text)
+	}
+
 const router = useRouter();
 const route = useRoute();
 
@@ -195,7 +201,7 @@ const setNetwork = (e) => {
 						<van-icon name="arrow" class="arrow" />
 					</template>
 				</van-cell>
-				<van-field :placeholder="$t('withdraw.enterBlockchainAddress')" disabled
+				<van-field :placeholder="$t('withdraw.enterBlockchainAddress')" disabled :right-icon="copy" @click-right-icon="copyFun(rechargeQuery.blockchain)"
 					v-model="rechargeQuery.blockchain"
 					:rules="[{ required: true, message: $t('withdraw.enterBlockchainAddress') }]" />
 			</div>

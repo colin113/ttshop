@@ -256,8 +256,9 @@
 						</template>
 					</van-uploader>
 				</div>
-				<div class="h-10"></div>
+				<div class="h-[9rem]"></div>
 			</div>
+			
 			<div class="btn mt-3 flex justify-center rounded-md h-[8rem] bg-white">
 				<van-button block color="#009996" native-type="submit">{{ $t("walletrecharge.submit") }}</van-button>
 			</div>

@@ -141,8 +141,8 @@
 			<div class=" text-white mx-3 pb-3 font-semibold" style="font-size: 1.8rem;font-family: Poppins;">
 				{{ $t("product.ProductCategory") }}
 			</div>
-			<div class="mx-3 mt-3 flex justify-between">
-				<div class="w-[12rem] h-[8rem] rounded-[0.5rem] back_3 back_4 p-3 flex"
+			<div class="mx-3 mt-3 grid grid-cols-2 gap-x-4">
+				<div class=" h-[8rem] rounded-[0.5rem] back_3 back_4 p-3 flex"
 					style="box-shadow: 0px 30px 50px -20px rgba(0,153,150,0.3);" @click="router.push('/distribution')">
 					<div class="w-[50%] " style="line-height: 2.2rem;font-family: Poppins;font-size: .9rem;">
 						{{ $t("distribution.distributionCenter") }}
@@ -151,7 +151,7 @@
 						<img class="w-[80%]" src="@/assets/image/product/distributionCenter.png" alt="">
 					</div>
 				</div>
-				<div class="w-[12rem] h-[8rem] rounded-[0.5rem] back_3 back_4 p-3 flex"
+				<div class=" h-[8rem] rounded-[0.5rem] back_3 back_4 p-3 flex"
 					style="box-shadow: 0px 30px 50px -20px rgba(0,153,150,0.3);" @click="router.push('/goods')">
 					<div class="w-[50%]" style="line-height: 2.2rem;font-family: Poppins;font-size: .9rem;">
 						{{ $t("product.ProductManagement") }}

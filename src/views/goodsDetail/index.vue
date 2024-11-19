@@ -45,8 +45,8 @@
 		<img src="@/assets/image/BG.png">
 	</div>
 	<header>
-		<van-nav-bar :title="$t('goodsDetail.Detail')" :border="false" :left-text="$t('goback')" left-arrow
-			@click-left="onClickLeft" />
+		<van-nav-bar :title="$t('goodsDetail.Detail')" fixed placeholder :border="false" :left-text="$t('goback')"
+			left-arrow @click-left="onClickLeft" />
 	</header>
 	<main class="mx-3 mt-10">
 		<div class="mx-3">
@@ -113,7 +113,7 @@
 	}
 
 	:deep(.van-nav-bar) {
-		background-color: transparent !important;
+		background-color: #009996 !important;
 	}
 
 	// :deep(.van-nav-bar__title),
