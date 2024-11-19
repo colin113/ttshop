@@ -321,8 +321,8 @@
 			</transition>
 
 			<!--注册-->
-			<transition name="van-slide-up">
-				<div class="bg-white overflow-y-auto rounded-t-2xl fixed bottom-0 pb-6 "
+			<transition name="van-slide-up ">
+				<div class="bg-white overflow-y-auto rounded-t-2xl fixed bottom-0 pb-6 zc"
 					v-if="showLogin === $t('login.register')"
 					style="width:100vw;height: 100%;border-radius: 0;background-color: #F8F8F8;">
 					<van-nav-bar style="color:#000 !important;background-color: #F8F8F8 !important;"
@@ -689,6 +689,11 @@
 	* {
 		--van-field-input-text-color: #181818;
 		--van-field-input-text-color: #fff
+	}
+	.zc{
+		*{
+			--van-field-input-text-color:#181818
+		}
 	}
 </style>
 

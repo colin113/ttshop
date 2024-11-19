@@ -72,13 +72,17 @@ onBeforeMount(() => {
       </div>
 
       <div class="pt-10">
-        <van-button native-type="submit" round block color="#191919">{{ $t("walletrecharge.submit") }}</van-button>
+        <van-button native-type="submit" round block color="#009996">{{ $t("walletrecharge.submit") }}</van-button>
       </div>
     </van-form>
   </main>
 </template>
 
 <style lang="scss" scoped>
+:deep(.van-nav-bar) {
+		background-color: #009996 !important;
+	}
+
 .coins-container {
   padding: 0 1rem 1rem 1rem;
   display: flex;

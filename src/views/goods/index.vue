@@ -267,7 +267,11 @@
 										@click="productMove(item.id, item.product_id, item.switch)">
 										<span class="text-[#AEAEAE] text-sm ">{{ $t("goods.OffShelf") }}</span>
 									</van-button>
-									<van-button type="default" size="small" v-if="showDelBtn"
+									<van-button type="default" size="small" class="bg009996 " v-if="showDelBtn"
+										@click="productMove(item.id, item.product_id, item.switch)">
+										<span class="text-[#fff] text-sm ">{{ $t("goods.OnShelf") }}</span>
+									</van-button>
+									<van-button type="default" size="small" class="ml2rem" v-if="showDelBtn"
 										@click="toRemoveProduct(item.product_id)" color="#F5F6F6"
 										style="border: 1px solid #CBCBCB;">
 										<span class="text-neutral-500 text-sm">{{ $t("goods.remove") }}</span>
@@ -352,5 +356,13 @@
 		--van-search-left-icon-color: transparent;
 		--van-search-input-height: 3.5rem;
 		--van-slider-button-background: #009996;
+	}
+
+	.bg009996{
+		background-color: #009996 !important;
+		color: #fff !important;
+	}
+	.ml2rem{
+		margin-left: 1rem;
 	}
 </style>
