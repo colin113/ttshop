@@ -3,7 +3,6 @@ import {
 	recharge,
 	getBlockchain,
 	upload,
-	getRate,
 	RechargeType
 } from '@/api/index.js'
 import {
@@ -36,16 +35,7 @@ const onClickLeft = () => {
 };
 
 const rechargeRate = ref(0)
-//获取汇率
-const requestRate = async () => {
-	const res = await getRate({
 
-	});
-	rechargeRate.value = res.data.rate
-}
-//上传参数
-// const price1 = ref()
-const rechargeFact = ref(0);
 
 const rechargeQuery = ref({
 	"bank_card": "",
@@ -99,12 +89,11 @@ const validator = (val) => /^[1-9]\d*$/.test(val)
 const changePrice = (e) => {
 	// rechargeQuery.value.price = ;
 	rechargeQuery.value.price = Number(e.target.value);
-	rechargeFact.value = (rechargeQuery.value.price / rechargeRate.value).toFixed(2);
+
 }
 
 onBeforeMount(() => {
 	getBlockchaindata()
-	requestRate();
 	// getRechargeType()
 })
 
@@ -222,11 +211,7 @@ const setNetwork = (e) => {
 					</template> -->
 				</van-field>
 			</div>
-			<div class="flex text-[#009996] justify-end mt-5  text-sm">
-				<span>
-					{{ $t("withdraw.actualAmountReceived") }}{{ rechargeFact }} $
-				</span>
-			</div>
+
 			<div class="money mt-[1.2rem]">
 				<!-- <van-cell :title="金额*" center style="font-size: 20px" /> -->
 				<van-field :label="$t('withdraw.Hash_value')" placeholder-class="placeholder"
