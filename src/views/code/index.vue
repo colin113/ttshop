@@ -299,9 +299,13 @@
 						</div>
 					</div>
 					<div class="bg-black mx-3 h-16 flex justify-center items-center text-white mt-10">
-						<van-button style="background-color:  #009996;" native-type="submit" @click="getcheckInvite"> {{
-								$t("login.login") }}</van-button>
+						<van-button style="background-color:  #009996;" native-type="submit" @click="getcheckInvite">{{ $t("code.Apply") }}</van-button>
 					</div>
+
+          <div class="bg-black mx-3 h-16 flex justify-center items-center text-white mt-10">
+            <van-button style="background-color:  #009996;" native-type="submit" @click="router.push('/emailLogin')">  {{ $t("newword.emailLogin") }}</van-button>
+          </div>
+
 				</van-form>
 			</div>
 		</main>
