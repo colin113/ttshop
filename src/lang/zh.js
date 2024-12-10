@@ -137,7 +137,7 @@ export default {
 		actualAmountReceived: "实际到账金额:",
 		fee: "手续费:",
 		submit: "提交",
-		nozero: "不能为0",
+		nozero: "请输入正确金额数字",
 		noOver: "不能超出余额",
 		all: "全部",
 	},
@@ -496,6 +496,7 @@ export default {
 	},
 	walletrecharge: {
 		uprechargevoucher: "请上传充值凭证",
+		uprechargevoucher1: "请上传包含清晰哈希值的充值凭证",
 		bank_name: '银行名称',
 		name: '姓名',
 		Card_Number: '卡号',

@@ -55,12 +55,14 @@
 				name: 'CNY'
 			});
 			moneyUnit.value = 'CNY'
+      currencytype.value = 'CNY'
 		} else {
 			actionscurrency.shift();
 			actionscurrency.push({
-				name: 'USD'
+				name: 'USDT'
 			});
 			moneyUnit.value = 'USDT'
+      currencytype.value = 'USDT'
 		}
 	};
 	//选择货币选项卡
@@ -188,6 +190,7 @@
 				if (res.code === 1) {
 					showSuccessToast(res.msg);
 					showActionSheet.value = false
+          setTimeout(onClickLeft,1000)
 				} else {
 					showFailToast(res.msg);
 				}

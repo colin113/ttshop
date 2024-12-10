@@ -20,13 +20,13 @@
 						<span class="text-[#FFE570]"> ${{profit}}</span>
 					</div>
 
-					<div class="level text-[0.85rem] text-[#C0E5E3] mt-4 ">
+<!--					<div class="level text-[0.85rem] text-[#C0E5E3] mt-4 ">
 						{{$t("vip.Overview") }}
-					</div>
-					<div class="mt-4 h-[2.7rem] text-[#FFF] rounded flex justify-center items-center"
+					</div>-->
+<!--					<div class="mt-4 h-[2.7rem] text-[#FFF] rounded flex justify-center items-center"
 						style="background-color: #45B0AA;" @click="Goto('/VipRule')">
 						{{$t("vip.btn") }}
-					</div>
+					</div>-->
 				</div>
 			</div>
 			<div class="items-center grid grid-cols-2 bg-[#FDFEFE] text-[#009996] back_4 rounded-2xl h-[4rem] mt-3">

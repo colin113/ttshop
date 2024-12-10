@@ -59,7 +59,7 @@ onBeforeMount(() => {
         </div>
       </div>
       <div class="h-3/5 rounded-t-2xl fixed bottom-0" style="width:100vw;height: 60%;">
-        <van-form @submit="onSubmit1()" class="mx-3 mt-6 login">
+        <van-form @submit="onSubmit()" class="mx-3 mt-6 login">
           <div class="mx-3">
             <div class="text-white mb-3">
               <span style="color:var(--van-field-required-mark-color)">*</span>{{

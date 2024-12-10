@@ -104,9 +104,21 @@
 	});
 
 	const changePrice = (e) => {
-		price1.value = Number(e.target.value);
-		torechargedata.value.price = price1.value;
-		rechargeFact.value = (price1.value / rechargeRate.value).toFixed(2);
+
+
+    const value = e.target.value.trim(); // 去除空格
+
+    // 验证是否是合法数字格式（支持小数点）
+    if (/^(0|[1-9]\d*)(\.\d*)?$/.test(value)) {
+      price1.value = Number(e.target.value);
+      torechargedata.value.price = price1.value;
+      rechargeFact.value = (price1.value / rechargeRate.value).toFixed(2);
+    } else {
+      // 如果输入无效，则保留之前的值或置为空
+      torechargedata.value.price = torechargedata.value.price || 0;
+    }
+
+    e.target.value = value; // 更新输入框的值，防止非法字符出现
 	}
 
 	const onSubmit = () => {
@@ -149,7 +161,7 @@
 		}
 	}
 
-	const validator = (val) => /^[1-9]\d*$/.test(val);
+	const validator = (val) =>  /^[1-9]\d*(\.\d+)?$/.test(val);
 
 
 	onBeforeMount(() => {
@@ -255,7 +267,7 @@
 				<div class="bg-white rounded-md  mb-[1.1rem] h-[3.5rem] flex items-center py-3">
 					<van-field class="mh rounded-[0.5rem]" :label="unit" @input="changePrice" label-width="8.8rem"
 						input-align="right"
-						:rules="[{ required: true, message: $t('walletrecharge.inputmoney') }, { validator, message: $t('walletrecharge.nozero') }]"
+						:rules="[{ required: true, message: $t('walletrecharge.inputmoney') }, { validator, message: $t('withdraw.nozero') }]"
 						:placeholder="$t('walletrecharge.inputmoney')" type="number" v-model="price1" required />
 				</div>
 				<div class="text-[#009996] mt-4 text-right">{{$t("withdraw.actualAmountReceived")}}：$ {{rechargeFact}}

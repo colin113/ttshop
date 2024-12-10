@@ -172,24 +172,26 @@
 			const res = await handleProduct(query.value)
 			if (res.code === 1) {
 				showSuccessToast(res.msg);
+
+        if (listQuery.value.switch == 'all') {
+          List.value = List.value.map(item => {
+            if (item.product_id === product_id) {
+              return {
+                ...item,
+                switch: item.switch == 1 ? 0 : 1
+              };
+            } else {
+              return item;
+            }
+          });
+        } else {
+          List.value = List.value.filter(item => item.product_id !== product_id)
+        }
 			} else {
 				showFailToast(res.msg);
 			}
 			//商品点击上下架之后全部页面 把swith标签改相反,其他页面上下架直接删除
-			if (listQuery.value.switch == 'all') {
-				List.value = List.value.map(item => {
-					if (item.product_id === product_id) {
-						return {
-							...item,
-							switch: item.switch == 1 ? 0 : 1
-						};
-					} else {
-						return item;
-					}
-				});
-			} else {
-				List.value = List.value.filter(item => item.product_id !== product_id)
-			}
+
 		} else {
 			showFailToast(t("over"))
 		}

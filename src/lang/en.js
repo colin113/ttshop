@@ -137,7 +137,7 @@ export default {
 		actualAmountReceived: "Actual Amount Received:",
 		fee: "Fee:",
 		submit: "Submit",
-		nozero: "Cannot be zero",
+		nozero: "Please enter the correct amount",
 		noOver: "Cannot exceed balance",
 		all: "All",
 	},
@@ -496,6 +496,7 @@ export default {
 	},
 	walletrecharge: {
 		uprechargevoucher: "Please upload recharge voucher",
+		uprechargevoucher1: "Please upload the deposit voucher containing a clear hash value",
 		bank_name: 'Bank Name',
 		name: 'name',
 		Card_Number: 'Card Number',

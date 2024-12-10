@@ -63,7 +63,7 @@ const typeList = ref([
 //提交充值请求
 const onSubmit = () => {
 	if (rechargeImageUrl.value == "") {
-		showFailToast(t("walletrecharge.uprechargevoucher"));
+		showFailToast(t("walletrecharge.uprechargevoucher1"));
 		return;
 	}
 	loadingToast();
@@ -71,29 +71,31 @@ const onSubmit = () => {
 	const res = recharge(rechargeQuery.value).then(res => {
 		closeToast();
 		if (res.code === 1) {
-			// goToExternalSite(res.data.url)
-			if (rechargeType.value == "2") {
-				// router.push({ path: '/imageShow', query: { imgUrl: url } })
-				// showSuccessToast('');
-				showSuccessToast(res.msg);
-			} else {
-				showSuccessToast(res.msg);
-
-				setTimeout(onClickLeft,1000)
-				// window.location.href = res.data.url
-			}
-			//  showSuccessToast(res.msg);
+      showSuccessToast(res.msg);
+      setTimeout(onClickLeft,1000)
 		} else {
 			showFailToast(res.msg);
 		}
 	})
 }
 //校验函数
-const validator = (val) => /^[1-9]\d*$/.test(val)
+
+const validator = (val) => /^[1-9]\d*(\.\d+)?$/.test(val);
+
 
 const changePrice = (e) => {
-	// rechargeQuery.value.price = ;
-	rechargeQuery.value.price = Number(e.target.value);
+
+  const value = e.target.value.trim(); // 去除空格
+
+  // 验证是否是合法数字格式（支持小数点）
+  if (/^(0|[1-9]\d*)(\.\d*)?$/.test(value)) {
+    rechargeQuery.value.price = value; // 暂存字符串以允许继续输入
+  } else {
+    // 如果输入无效，则保留之前的值或置为空
+    rechargeQuery.value.price = rechargeQuery.value.price || "";
+  }
+
+  e.target.value = value; // 更新输入框的值，防止非法字符出现
 
 }
 
@@ -221,7 +223,7 @@ const setNetwork = (e) => {
 				<!-- <van-cell :title="金额*" center style="font-size: 20px" /> -->
 				<van-field :label="$t('withdraw.Hash_value')" placeholder-class="placeholder"
 					:placeholder="$t('withdraw.enterHash_value')" input-align="right" v-model="rechargeQuery.order"
-					:rules="[{ required: true, message: $t('withdraw.enterHash_value') }]">
+        >
 					<!-- 	<template #button>
 						<span class="text-blue-500">全部</span>
 					</template> -->
@@ -229,7 +231,7 @@ const setNetwork = (e) => {
 			</div>
 			<div class="bg-white rounded-[0.5rem] flex justify-between items-center p-3 mt-[1.2rem]">
 				<h5 class="mt-3 text-base"><span class="text-[#ee0a24] mr-[2px]">*</span>{{
-					$t("walletrecharge.uprechargevoucher") }}</h5>
+					$t("walletrecharge.uprechargevoucher1") }}</h5>
 				<van-uploader ref="uploadRef1" @delete="imgdelete" v-model="fileList1" :after-read="afterRead1"
 					:max-count="1" :show-upload="showUpload1" upload-icon="plus">
 					<template #preview-cover="{ file }">
