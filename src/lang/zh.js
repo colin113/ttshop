@@ -108,7 +108,7 @@ export default {
 	},
 	withdraw: {
 		card: "银行卡",
-		blockchain: "区块链",
+		blockchain: "美元",
 		zhifubao:"支付宝",
 		blockchainselection: "区块链选择",
 		withdrawal: "提现",
@@ -450,7 +450,7 @@ export default {
 		chainDeposit: "银行卡充值",
 		zfbDeposit: "支付宝充值",
 		wxDeposit: "微信充值",
-		blockchainRecharge: "USDT",
+		blockchainRecharge: "美元充值",
 		manualDeposit: "人工充值",
 		deposit: "充值",
 		depositHistory: "充值记录",

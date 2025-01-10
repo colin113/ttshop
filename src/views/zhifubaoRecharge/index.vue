@@ -3,14 +3,16 @@
 	import {
 		getBlockchain,
 		recharge,
-		upload,
+
+    upload,
 		getRate
 	} from "@/api/index.js";
 	import CustomFloatingPanel from '@/components/CustomFloatingPanel/index.vue'
 	import {
 		showSuccessToast,
 		showFailToast,
-		showToast
+    showConfirmDialog,
+    showToast
 	} from "vant";
 	import {
 		useI18n
@@ -194,7 +196,17 @@
 		});
 	}
 
+
+
 	onBeforeMount(() => {
+
+    showConfirmDialog({
+      title: '温馨提示！',
+      message: '确定要执行此操作吗？',
+      confirmButtonText: '确认',
+      cancelButtonText: false,
+    })
+
 		getBlockchaindata();
 		requestRate();
 		if (rechargeType.value == "0") {

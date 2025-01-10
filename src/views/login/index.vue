@@ -188,10 +188,18 @@
 	const showUpload3 = computed(() => {
 		return !fileList3.value.length
 	})
+  const loadingToast = () => {
+    showLoadingToast({
+      message: '',
+      forbidClick: true,
+      duration: 0
+    });
+  }
 	const afterRead1 = file => {
-		// toast.loading({msg:'上传中...'})
+
 		const formData1 = new FormData();
 		formData1.append('file', file.file);
+    loadingToast();
 		upload(formData1).then(res => {
 			if (res.code === 1) {
 				query.value.mer_avatar = res.data.fullurl
@@ -202,29 +210,30 @@
 		})
 	}
 	const afterRead2 = file => {
-		// toast.loading({msg:'上传中...'})
+   // toast.loading({msg:'上传中...'})
 		const formData2 = new FormData();
 		formData2.append('file', file.file);
+    loadingToast();
 		upload(formData2).then(res => {
 			if (res.code === 1) {
 				showSuccessToast(res.msg)
 				logo1.value = res.data.fullurl
-				console.log(logo1.value)
+
 			} else {
 				showFailToast(res.msg)
 			}
 		})
 	}
 	const afterRead3 = file => {
-		// toast.loading({msg:'上传中...'})
+   // toast.loading({msg:'上传中...'})
 		const formData3 = new FormData();
 		formData3.append('file', file.file);
+    loadingToast();
 		upload(formData3).then(res => {
 			if (res.code === 1) {
 				showSuccessToast(res.msg)
 				logo2.value = res.data.fullurl
 				query.value.images = logo1.value + ',' + logo2.value;
-				// console.log(logo2.value)
 			} else {
 				showFailToast(res.msg)
 			}

@@ -59,10 +59,10 @@
 		} else {
 			actionscurrency.shift();
 			actionscurrency.push({
-				name: 'USDT'
+				name: '美元'
 			});
-			moneyUnit.value = 'USDT'
-      currencytype.value = 'USDT'
+			moneyUnit.value = '美元'
+      currencytype.value = '美元'
 		}
 	};
 	//选择货币选项卡
@@ -306,14 +306,19 @@
 				<van-field :placeholder="$t('withdraw.enterAmount')" v-model="price1" @input="changePrice"
 					:rules="[{ required: true, message: $t('withdraw.enterAmount') }, { validator: validator1, message: $t('withdraw.nozero') }]">
 					<template #button>
-						<span class="text-blue-500" @click="price1 = ((info.balance * rechargeRate).toFixed(2))">{{
+						<span v-if="extracttype !== $t('withdraw.blockchain')" class="text-blue-500" @click="price1 = ((info.balance * rechargeRate).toFixed(2))">{{
 							$t("withdraw.all") }}</span>
+
+            <span v-if="extracttype === $t('withdraw.blockchain')" class="text-blue-500" @click="price1 = ((info.balance*1).toFixed(2))">{{
+                $t("withdraw.all") }}</span>
+
+
 					</template>
 				</van-field>
 
 				<div class="text-sm mt-3 text-green-500 mx-4">{{ $t("withdraw.currentBalance") }}
 					<span>{{ info.balance }}</span>
-					USDT ≈
+					美元 ≈
 					<span>{{ (info.balance * rechargeRate).toFixed(2) }}</span>
 					CNY
 				</div>
