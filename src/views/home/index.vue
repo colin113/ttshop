@@ -1,12 +1,13 @@
 <script setup>
 import tabbers from '@/components/tabbar/index.vue';
 import firstecharts from '@/components/firstecharts.vue';
-import {test, home} from '@/api/index';
+import {test, home, tanNotice} from '@/api/index';
 import {useRouter} from 'vue-router'
 import {useUserStore} from '@/store/modules/user.js';
-import { useI18n } from 'vue-i18n';
+import {useI18n} from 'vue-i18n';
+import {Modal} from 'ant-design-vue';
 //多语言
-const { t } = useI18n();
+const {t} = useI18n();
 const router = useRouter();
 //仓库中获取商户信息请求函数
 const userStore = useUserStore();
@@ -28,7 +29,7 @@ const imgs2 = ref([{
   {
     title: t("home.todaysEstimatedProfit"),
     icon: new URL('@/assets/image/home2/3.png', import.meta.url).href,
-    data:''
+    data: ''
   },
 ])
 //请求首页数据
@@ -37,10 +38,64 @@ const getHomeData = async () => {
   const res = await home()
   // console.log(res)
   homeData.value = res.data
-  imgs2.value[0].data=homeData.value.today_order
-  imgs2.value[1].data=homeData.value.today_sales
-  imgs2.value[2].data=homeData.value.today_profit
+  imgs2.value[0].data = homeData.value.today_order
+  imgs2.value[1].data = homeData.value.today_sales
+  imgs2.value[2].data = homeData.value.today_profit
   console.log(imgs2.value)
+}
+
+/*=====公告数据====*/
+const startRequest = ref(true)
+const noticeData = ref({})
+const noticeDataCount = ref(0)
+const noticeDataList = ref({})
+const getNoticeData = async () => {
+  const res = await tanNotice()
+  // console.log(res)
+  noticeData.value = res.data
+  noticeDataCount.value = noticeData.value.total
+  noticeDataList.value = noticeData.value.list
+  console.log(noticeDataCount.value)
+  if (noticeDataCount.value > 0) {
+    startRequest.value = false
+    showNotice()
+  }
+}
+
+const showNotice = () => {
+  const data = getNextData();
+  // console.log(data)
+  if (data == null) {
+    currentNoticeIndex.value = 0
+    startRequest.value = true
+    return
+  }
+  Modal.info({
+    title: data.title,
+    content: data.content,
+    onOk() {
+      showNotice()
+    },
+  });
+}
+
+const currentNoticeIndex = ref(0)
+const getNextData = () => {
+  currentNoticeIndex.value++
+  // console.log(noticeDataCount.value+'---'+currentNoticeIndex.value)
+  if (noticeDataCount.value >= currentNoticeIndex.value) {
+    return noticeDataList.value[currentNoticeIndex.value - 1]
+  } else {
+    return null
+  }
+}
+
+const getNoticeDataInterval = () => {
+  setInterval(async () => {
+    if(startRequest.value) {
+      await getNoticeData()
+    }
+  }, 5000);
 }
 
 /*=====数据折叠====*/
@@ -57,7 +112,7 @@ const img = ref({
 
 //店铺数据--店铺展示卡
 const list = [{
-  name:  t("home.shopFollowers"),
+  name: t("home.shopFollowers"),
   data: userStore.MerInfo.follow_count,
   icon: new URL('@/assets/image/home3/店铺关注.png', import.meta.url).href
 }, {
@@ -82,12 +137,12 @@ const imgs = ref([{
     path: '/refundRequest'
   },
   {
-    title:t("home.shopExpressLane"),
+    title: t("home.shopExpressLane"),
     icon: new URL('@/assets/image/home1/店铺直通车.png', import.meta.url).href,
     path: '/storeExpress'
   },
   {
-    title:  t("home.humanCustomerService"),
+    title: t("home.humanCustomerService"),
     icon: new URL('@/assets/image/home1/创业联盟.png', import.meta.url).href,
     path: '/service'
   },
@@ -97,7 +152,7 @@ const imgs = ref([{
     path: '/withdraw'
   },
   {
-    title:t("home.distributionCenter"),
+    title: t("home.distributionCenter"),
     icon: new URL('@/assets/image/home1/卖家等级.png', import.meta.url).href,
     path: '/distribution'
   }
@@ -105,6 +160,8 @@ const imgs = ref([{
 
 onBeforeMount(() => {
   getHomeData()
+  getNoticeData()
+  getNoticeDataInterval()
   userStore.toGetMerInfo()
 })
 </script>
@@ -125,14 +182,14 @@ onBeforeMount(() => {
             <div class="mt-1 flex justify-center ">
               <span class="text-lg text-[#191919] ml-1.5 font-semibold ">{{ userStore.MerInfo.mer_name }}</span>
             </div>
-<!--            <div class="ml-1 mt-2">-->
-<!--              <span class="text-sm  px-3 py-2 rounded-xl bg-gradient-to-r from-[#6B6B6B]  to-[#1C1B1B]">未认证</span>-->
-<!--            </div>-->
+            <!--            <div class="ml-1 mt-2">-->
+            <!--              <span class="text-sm  px-3 py-2 rounded-xl bg-gradient-to-r from-[#6B6B6B]  to-[#1C1B1B]">未认证</span>-->
+            <!--            </div>-->
           </div>
         </div>
         <div class="flex items-center ml-auto">
           <div class="flex items-center ml-auto">
-            <van-badge  class="mr-3" :content="userStore.MerInfo.unread_notice" @click="router.push('/message')">
+            <van-badge class="mr-3" :content="userStore.MerInfo.unread_notice" @click="router.push('/message')">
               <img class="h-8 w-8" :src="img.icon1" alt="">
             </van-badge>
           </div>
@@ -141,7 +198,6 @@ onBeforeMount(() => {
         </div>
       </div>
     </header>
-
     <main>
       <!--数据展示-->
       <div class="bg-white mx-3 py-3 rounded-md back_4">
@@ -149,7 +205,7 @@ onBeforeMount(() => {
              style="transition: max-height 1s ease-in-out;">
           <div class="flex justify-between mr-3">
             <div class=" antialiased font-semibold mx-3.5 text-lg">{{ $t("home.shopData") }}</div>
-            <div class="flex justify-between align-middle "  @click="fold">
+            <div class="flex justify-between align-middle " @click="fold">
               <div class="flex justify-end items-center text-gray-500 w-60 mr-1">{{ $t("home.expandDetails") }}</div>
               <div class="flex justify-center items-center ">
                 <img :src="img.icon2" alt="">
@@ -166,7 +222,7 @@ onBeforeMount(() => {
                 </div>
               </div>
               <div class="flex flex-col justify-center items-start">
-                <div ><span class="antialiased font-semibold text-2xl">${{ homeData.total_profit }}</span></div>
+                <div><span class="antialiased font-semibold text-2xl">${{ homeData.total_profit }}</span></div>
                 <div>
                   <van-icon name="gold-coin-o"/>
                   <span class="text-sm text-neutral-500">{{ $t("home.totalprofit") }}</span>

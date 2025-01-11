@@ -52,7 +52,8 @@ const router = createRouter({
 // 设置默认页面为'/home'
 router.addRoute({
     path: '/',
-    redirect: '/code',
+    // redirect: '/code',
+    redirect: '/login',
 });
 
 //全局前置守卫
