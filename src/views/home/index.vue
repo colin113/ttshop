@@ -1,9 +1,11 @@
 <script setup>
 	import tabbers from '@/components/tabbar/index.vue';
+
 	import firstecharts from '@/components/firstecharts.vue';
 	import {
 		test,
-		home
+		home,
+    tanNotice
 	} from '@/api/index';
 	import {
 		useRouter
@@ -14,6 +16,9 @@
 	import {
 		useI18n
 	} from 'vue-i18n';
+  import {Modal} from 'ant-design-vue';
+
+
 	//多语言
 	const {
 		t
@@ -53,6 +58,59 @@
 		imgs2.value[2].data = homeData.value.today_profit
 		console.log(imgs2.value)
 	}
+
+
+  /*=====公告数据====*/
+  const startRequest = ref(true)
+  const noticeData = ref({})
+  const noticeDataCount = ref(0)
+  const noticeDataList = ref({})
+  const getNoticeData = async () => {
+    const res = await tanNotice()
+    // console.log(res)
+    noticeData.value = res.data
+    noticeDataCount.value = noticeData.value.total
+    noticeDataList.value = noticeData.value.list
+    console.log(noticeDataCount.value)
+    if (noticeDataCount.value > 0) {
+      startRequest.value = false
+      showNotice()
+    }
+  }
+
+
+  const showNotice = () => {
+    const data = getNextData();
+
+    // 显示模态框
+    Modal.info({
+      title: data.title,
+      content: () => <div innerHTML={data.content}></div>, // 动态插入 HTML 内容
+      onOk() {
+        showNotice(); // 递归调用，显示下一条通知
+      },
+    });
+  };
+
+
+  const currentNoticeIndex = ref(0)
+  const getNextData = () => {
+    currentNoticeIndex.value++
+    // console.log(noticeDataCount.value+'---'+currentNoticeIndex.value)
+    if (noticeDataCount.value >= currentNoticeIndex.value) {
+      return noticeDataList.value[currentNoticeIndex.value - 1]
+    } else {
+      return null
+    }
+  }
+
+  const getNoticeDataInterval = () => {
+    setInterval(async () => {
+      if (startRequest.value) {
+        await getNoticeData()
+      }
+    }, 5000);
+  }
 
 	/*=====数据折叠====*/
 	const foldHeight = ref('400px');
@@ -115,8 +173,10 @@
 		path: '/baseinfo'
 	}, ])
 	onBeforeMount(() => {
-		getHomeData()
-		userStore.toGetMerInfo()
+    getHomeData()
+    getNoticeData()
+    getNoticeDataInterval()
+    userStore.toGetMerInfo()
 	})
 	const lang = localStorage.getItem('lang')
 </script>

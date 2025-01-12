@@ -14,9 +14,13 @@ import {
 	resolve
 } from 'path';
 
+import vueJsx from '@vitejs/plugin-vue-jsx';
+
+
 export default defineConfig({ // 使用 defineConfig 函数
 	plugins: [
 		vue(),
+		vueJsx(),
 		AutoImport({
 			imports: ['vue', 'vue-router', 'pinia'],
 			resolvers: [VantResolver()],

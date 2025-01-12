@@ -477,3 +477,10 @@ export const RechargeType = (data) => {
 		params: data,
 	});
 };
+//公告数据
+export const tanNotice = () => {
+	return service({
+		url: "/merchant/index/tanNotice",
+		method: "GET",
+	});
+};
