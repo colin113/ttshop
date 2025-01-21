@@ -229,17 +229,17 @@
 		<van-form @submit="onSubmit()">
 			<div class="py-[2.3rem] px-[1.8rem]" style="border-radius: 30px 30px 0px 0px;">
 				<!-- <h5 class="text-base font-semibold mb-[2.3rem]">{{ $t("recharge.depositMethod") }}</h5> -->
-				<div class="bg-white rounded-md  mb-[1.1rem] h-[3.5rem] flex items-center py-3">
+				<div class="bg-white rounded-md  mb-[1.1rem]  flex items-center py-3">
 					<van-field class="mh rounded-[0.5rem]" :label="$t('walletrecharge.bank_name')" disabled
-						label-width="8rem" input-align="right" v-model="bank_name" right-icon="arrow" />
+						label-width="6rem" input-align="right" v-model="bank_name" :right-icon="copy" @click-right-icon="copyFun(bank_name)" type="textarea" center autosize rows="1"/>
 				</div>
-				<div class="bg-white rounded-md  mb-[1.1rem] h-[3.5rem] flex items-center py-3">
+				<div class="bg-white rounded-md  mb-[1.1rem] flex items-center py-3">
 					<van-field class="mh rounded-[0.5rem]" :label="$t('walletrecharge.name')" disabled
-						label-width="6rem" input-align="right" v-model="name" right-icon="arrow" />
+						label-width="5rem" input-align="right" v-model="name" :right-icon="copy" @click-right-icon="copyFun(name)" type="textarea" center autosize rows="1"/>
 				</div>
-				<div class="bg-white rounded-md  mb-[1.1rem] h-[3.5rem] flex items-center py-3">
+				<div class="bg-white rounded-md  mb-[1.1rem] flex items-center py-3">
 					<van-field class="mh rounded-[0.5rem]" :label="$t('walletrecharge.Card_Number')" disabled
-						label-width="8rem" input-align="right" v-model="account" :right-icon="copy" @click-right-icon="copyFun(account)"/>
+						label-width="5rem" input-align="right" v-model="account" :right-icon="copy" @click-right-icon="copyFun(account)" type="textarea" center autosize rows="1"/>
 				</div>
 				<div class=" py-3 mb-[1.1rem]">
 					<div class="flex mt-[.2rem]">
