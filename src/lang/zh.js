@@ -623,7 +623,7 @@ export default {
 
 		ok: '已完成',
 		no: '未完成',
-		noRecords: "没有记录",
+		noRecords: "未搜索到数据",
 		Valid: "有效VIP商家",
 		Invalid: "无效VIP商家",
 		nomore: "没有更多了",

@@ -622,7 +622,7 @@ export default {
 
 		ok: 'Completed',
 		no: 'Unfinished',
-		noRecords: 'No records yet',
+		noRecords: 'No data found',
 		nomore: "No more",
 		Valid: "Valid VIP Merchants",
 		Invalid: "Invalid VIP merchant",
