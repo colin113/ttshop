@@ -627,7 +627,21 @@ export default {
 		Valid: "Valid VIP Merchants",
 		Invalid: "Invalid VIP merchant",
 		payment: 'Order Amount',
-		number: "NOS"
+		number: "NOS",
+
+		vipMerch: "VIP Merchants",
+		dataCount: "Statistics",
+		totalCost: "VIP merchant total turnover",
+		checkTime: "Statistics time:",
+		qiDays: "7 days",
+		swDays: "15 days",
+		timeSearch: "Custom time",
+		startTime: "Start time",
+		endTime: "End time",
+		timeCount: "Statistical time",
+		orderCount: "order quantity",
+		orderTotal: "order amount",
+		timeDuringError: "The end time must be greater than the start time",
 	},
 	VipRule: {
 		title: 'Rule Description',

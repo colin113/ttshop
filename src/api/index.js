@@ -461,6 +461,15 @@ export const viplist = (data) => {
 		params: data,
 	});
 };
+
+//vip数据统计
+export const dataCount = (data) => {
+	return service({
+		url: "/merchant/index/viplistcount",
+		method: "get",
+		params: data,
+	});
+};
 //奖池排行榜
 export const ranklist = (data) => {
 	return service({
