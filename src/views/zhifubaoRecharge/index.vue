@@ -200,12 +200,12 @@
 
 	onBeforeMount(() => {
 
-    showConfirmDialog({
+   /* showConfirmDialog({
       title: '温馨提示！',
       message: '确定要执行此操作吗？',
       confirmButtonText: '确认',
       cancelButtonText: false,
-    })
+    })*/
 
 		getBlockchaindata();
 		requestRate();

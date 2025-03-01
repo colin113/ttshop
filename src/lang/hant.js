@@ -432,7 +432,7 @@ export default {
     chainDeposit: "銀行卡充值",
     zfbDeposit: "支付宝充值",
     wxDeposit: "微信充值",
-    manualDeposit: "人工充值",
+    manualDeposit: "人工客服",
     deposit: "充值",
     depositHistory: "充值記錄",
     depositMethod: "充值方式",

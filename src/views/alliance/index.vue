@@ -71,7 +71,7 @@ const copy = (textToCopy) => {
   <main class="mx-3">
     <div class="imgs">
       <div class="pt-10 flex flex-col justify-center justify-items-center">
-        <span class="pl-12 pr-12 text-center " style="font-size: 24px">Code:{{ responseData.code }}</span>
+        <span class="pl-12 pr-12 text-center " style="font-size: 24px">code:{{ responseData.code }}</span>
         <span class="pl-12 pr-12 text-center pt-2">{{ $t("alliance.title1") }} </span>
       </div>
       <!--      <img class="w-32 h-32 mt-6" src="@/assets/image/img.png" alt="">-->
