@@ -17,6 +17,7 @@ import {
   useI18n
 } from 'vue-i18n';
 import {Modal} from 'ant-design-vue';
+import {onBeforeUnmount} from "vue";
 
 
 //多语言
@@ -116,12 +117,17 @@ const getNextData = () => {
   }
 }
 
+const intervalId  = ref()
 const getNoticeDataInterval = () => {
-  setInterval(async () => {
+  intervalId.value=setInterval(async () => {
     if (startRequest.value) {
       await getNoticeData()
     }
   }, 5000);
+}
+
+const stopNoticeDataInterval = () => {
+  clearInterval(intervalId.value)
 }
 
 /*=====数据折叠====*/
@@ -190,6 +196,12 @@ onBeforeMount(() => {
   getNoticeDataInterval()
   userStore.toGetMerInfo()
 })
+
+onBeforeUnmount(()=>{
+  stopNoticeDataInterval()
+})
+
+
 const lang = localStorage.getItem('lang')
 </script>
 
