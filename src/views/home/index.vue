@@ -123,7 +123,7 @@ const getNoticeDataInterval = () => {
     if (startRequest.value) {
       await getNoticeData()
     }
-  }, 5000);
+  }, 10000);
 }
 
 const stopNoticeDataInterval = () => {

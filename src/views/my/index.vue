@@ -397,9 +397,9 @@ const getRanklist = async (path) => {
 				</div>
 			</div> -->
 <!--      <div class="bg-black mx-3 mt-3 flex justify-center items-center rounded-md py-3">
-      <span class="text-white" @click="loginOut">{{ $t("my.logout") }}</span>
-    </div>-->
-			<div class="h-[4.5rem]"></div>
+        <span class="text-white" @click="loginOut">{{ $t("my.logout") }}</span>
+      </div>
+			<div class="h-[4.5rem]"></div>-->
 		</main>
 	</div>
 	<tabbers></tabbers>

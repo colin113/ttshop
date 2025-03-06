@@ -247,7 +247,7 @@ export default {
 		changePayPassword: "修改支付密码",
 		oldpwd: "原资金密码",
 		inputpwd: "请输入6位密码",
-		newpwd: "新自己密码",
+		newpwd: "新资金密码",
 		againpwd: "再次输入资金密码",
 		againinput: "请再次输入密码",
 		submit: "提交",
@@ -350,7 +350,7 @@ export default {
 		enterInvitationCode: "请输入邀请码",
 		alreadyHaveAccount: "已有账号?",
 		backToLogin: "返回登录",
-		TiTok_Mall: "注册，TiTok商城"
+		TiTok_Mall: "注册，TikTok商城"
 	},
 	message: {
 		all: "全部",
@@ -451,7 +451,7 @@ export default {
 		zfbDeposit: "支付宝充值",
 		wxDeposit: "微信充值",
 		blockchainRecharge: "美元充值",
-		manualDeposit: "人工充值",
+		manualDeposit: "人工客服",
 		deposit: "充值",
 		depositHistory: "充值记录",
 		depositMethod: "充值方式",
