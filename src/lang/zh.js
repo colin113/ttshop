@@ -350,7 +350,7 @@ export default {
 		enterInvitationCode: "请输入邀请码",
 		alreadyHaveAccount: "已有账号?",
 		backToLogin: "返回登录",
-		TiTok_Mall: "注册，TiTok商城"
+		TiTok_Mall: "注册，TikTok商城"
 	},
 	message: {
 		all: "全部",

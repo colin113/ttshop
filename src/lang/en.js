@@ -350,7 +350,7 @@ export default {
 		enterInvitationCode: "Enter invitation code",
 		alreadyHaveAccount: "Already have an account?",
 		backToLogin: "Back to login",
-		TiTok_Mall: "Sing up to,TiTok Mall"
+		TiTok_Mall: "Sing up to,TikTok Mall"
 	},
 	message: {
 		all: "All",
