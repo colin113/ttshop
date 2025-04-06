@@ -133,7 +133,7 @@
 				<div class="flex justify-between mx-3">
 					<div class="title">{{ $t("rechargerecord.amount") }}</div>
 					<div class="flex items-center value">
-						<span>{{ item.price }}</span>
+						<span>{{item.recharge_type==1?"$":"￥"}}{{ item.price }}</span>
 					</div>
 				</div>
 				<div class="flex justify-between mx-3">
@@ -143,7 +143,7 @@
 						<span class="text-green-500"
 							v-if="item.status===1">{{ $t("rechargerecord.haveapproved") }}</span>
 						<span class="text-red-500"
-							v-if="item.status===-1">{{ $t("rechargerecord.nopass") }}({{ item.admin_msg }})</span>
+							v-if="item.status===-1">{{ $t("rechargerecord.nopass") }}{{ (item.admin_msg==""||item.admin_msg==null)?"":"("+item.admin_msg+")" }}</span>
 					</div>
 				</div>
 			</div>

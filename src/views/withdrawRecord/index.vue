@@ -144,7 +144,7 @@
 				<div class="flex justify-between mx-3">
 					<div class="title">{{ $t("withdrawRecord.amount") }}</div>
 					<div class="flex items-center value">
-						<span>{{ item.extract_price }}</span>
+						<span>{{item.extract_type==1?"$":"￥"}}{{ item.extract_price }}</span>
 					</div>
 				</div>
 				<div class="flex justify-between mx-3">
@@ -154,7 +154,7 @@
 						<span class="text-green-500"
 							v-if="item.status===1">{{ $t("withdrawRecord.haveapproved") }}</span>
 						<span class="text-red-500"
-							v-if="item.status===-1">{{ $t("withdrawRecord.nopass") }}({{ item.admin_msg }})</span>
+							v-if="item.status===-1">{{ $t("withdrawRecord.nopass") }}{{ (item.admin_msg==""||item.admin_msg==null)?"":"("+item.admin_msg+")" }}</span>
 					</div>
 				</div>
 			</div>
