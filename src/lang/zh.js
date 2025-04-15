@@ -124,7 +124,7 @@ export default {
 		bankName: "银行名称",
 		enterBankName: "请输入银行名称",
 		blockchainAddress: "区块链地址",
-		rechargeReminder: "*请使用当前地址转账，旧地址将无法接收资金。",
+		rechargeReminder: "请使用当前地址转账，旧地址将无法接收资金。",
 		enterBlockchainAddress: "请输入区块链地址",
 		bankCardNumber: "银行卡卡号",
 		enterBankCardNumber: "请输入银行卡卡号",
