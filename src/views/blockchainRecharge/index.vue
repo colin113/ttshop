@@ -185,29 +185,17 @@ const setNetwork = (e) => {
 					</div>
 				</div>
 			</div>
-			<div class="mt-[1.2rem]">
-				<van-cell :title="$t('withdraw.blockchainAddress')" center style="font-size: 20px">
-					<template #right-icon>
+			<div class="mt-[1.4rem]">
+				<van-cell :title="$t('withdraw.rechargeReminder')" center style="font-size: 20px">
+<!--					<template #right-icon>
 						<van-icon name="arrow" class="arrow" />
-					</template>
+					</template>-->
 				</van-cell>
 				<van-field :placeholder="$t('withdraw.enterBlockchainAddress')" disabled :right-icon="copy" @click-right-icon="copyFun(rechargeQuery.blockchain)"
 					v-model="rechargeQuery.blockchain"
 					:rules="[{ required: true, message: $t('withdraw.enterBlockchainAddress') }]" />
 			</div>
-			<!-- <div>
-				<van-cell title="选择货币*" center style="font-size: 20px" />
-				<van-field placeholder="请输入货币类型" v-model="rechargeQuery.currency_type"
-					:rules="[{ required: true, message: '请填写货币类型' }]" />
-			</div>
-			<div>
-				<van-cell title="区块链网络" center style="font-size: 20px" />
-				<van-field placeholder="请输入区块链网络" />
-			</div>
-			<div>
-				<van-cell title="地址" center style="font-size: 20px" />
-				<van-field placeholder="请输入地址" />
-			</div> -->
+
 			<div class="money mt-[1.2rem]">
 				<!-- <van-cell :title="金额*" center style="font-size: 20px" /> -->
 				<van-field :label="$t('withdraw.amount')" :placeholder="$t('withdraw.enterAmount')" input-align="right"
@@ -220,13 +208,11 @@ const setNetwork = (e) => {
 			</div>
 
 			<div class="money mt-[1.2rem]">
-				<!-- <van-cell :title="金额*" center style="font-size: 20px" /> -->
+
 				<van-field :label="$t('withdraw.Hash_value')" placeholder-class="placeholder"
 					:placeholder="$t('withdraw.enterHash_value')" input-align="right" v-model="rechargeQuery.order"
         >
-					<!-- 	<template #button>
-						<span class="text-blue-500">全部</span>
-					</template> -->
+
 				</van-field>
 			</div>
 			<div class="bg-white rounded-[0.5rem] flex justify-between items-center p-3 mt-[1.2rem]">
@@ -239,20 +225,7 @@ const setNetwork = (e) => {
 				</van-uploader>
 			</div>
 			<div class="h-10"></div>
-			<!-- <div class="text-sm mt-3 text-green-500 mx-3">当前余额:
-				<span>956,702.91</span>
-				USDT ≈
-				<span>956,702.91</span>
-				USDC
-			</div>
-			<div class="flex text-blue-500 justify-between mt-3 mx-3 text-sm">
-				<span>
-					实际到账金额:0.00USDC
-				</span>
-				<span>
-					手续费:3.00%
-				</span>
-			</div> -->
+
 			<div class="btn mt-[1.2rem] flex justify-center rounded-md  ">
 				<van-button block color="#009996" class="h-[8rem] " native-type="submit">{{ $t("walletrecharge.submit")
 					}}</van-button>
