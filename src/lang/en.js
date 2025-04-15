@@ -124,7 +124,7 @@ export default {
 		bankName: "Bank Name",
 		enterBankName: "Enter Bank Name",
 		blockchainAddress: "Blockchain Address",
-		rechargeReminder: "Please use the current address. Old address won't receive funds.",
+		rechargeReminder: "*Please use the current address. Old address won't receive funds.",
 		enterBlockchainAddress: "Enter Blockchain Address",
 		bankCardNumber: "Bank Card Number",
 		enterBankCardNumber: "Enter Bank Card Number",

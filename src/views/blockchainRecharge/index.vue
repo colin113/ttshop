@@ -186,10 +186,8 @@ const setNetwork = (e) => {
 				</div>
 			</div>
 			<div class="mt-[1.4rem]">
-				<van-cell :title="$t('withdraw.rechargeReminder')" center style="font-size: 20px">
-<!--					<template #right-icon>
-						<van-icon name="arrow" class="arrow" />
-					</template>-->
+				<van-cell :title="$t('withdraw.rechargeReminder')" center style="font-size: 20px;color: #FE4938;font-weight: bold;">
+
 				</van-cell>
 				<van-field :placeholder="$t('withdraw.enterBlockchainAddress')" disabled :right-icon="copy" @click-right-icon="copyFun(rechargeQuery.blockchain)"
 					v-model="rechargeQuery.blockchain"
