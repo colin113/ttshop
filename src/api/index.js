@@ -1,4 +1,5 @@
 import service from "@/utils/request";
+import {compressImage} from "@/utils/compressImage.js";
 
 //测试接口
 export const test = (data) => {
@@ -10,6 +11,22 @@ export const test = (data) => {
 };
 //上传图片
 export const upload = (data) => {
+	if (data instanceof FormData && data.has("file")) {
+		const file = data.get("file");
+		// 判断文件是否为图片
+		if (file.type.startsWith("image/")) {
+			return compressImage(file).then((compressedFile) => {
+				// 替换原始文件为压缩后的文件
+				data.set("file", compressedFile);
+				// 调用实际的上传逻辑
+				return service({
+					url: "/merchant/common/upload",
+					method: "post",
+					data,
+				});
+			});
+		}
+	}
 	return service({
 		url: "/merchant/common/upload",
 		method: "post",
