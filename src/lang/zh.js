@@ -633,6 +633,7 @@ export default {
 		vipMerch: "VIP商家",
 		dataCount: "数据统计",
 		totalCost: "VIP商家总流水",
+		totalReceCost: "VIP签收总流水",
 		checkTime: "查询统计时间:",
 		qiDays: "近7天",
 		swDays: "近15天",

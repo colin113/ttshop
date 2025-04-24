@@ -23,6 +23,10 @@
             <span>{{ $t("vip.totalCost") }}</span>
             <span class="text-[#FFE570]"> ${{ totalCost }}</span>
           </div>
+          <div class="level text-[0.9rem] text-[#fff] mt-2">
+            <span>{{ $t("vip.totalReceCost") }}</span>
+            <span class="text-[#FFE570]"> ${{ totalReceCost }}</span>
+          </div>
 
           <!--					<div class="level text-[0.85rem] text-[#C0E5E3] mt-4 ">
                       {{$t("vip.Overview") }}
@@ -182,6 +186,7 @@ const lang = localStorage.getItem("lang")
 const level = ref(1) //vip点击
 const profit = ref() //vip收益
 const totalCost = ref() //vip收益
+const totalReceCost = ref() //完成收货金额
 const active = ref(0) //0有效商家，1无效商家
 const showBottom = ref(false)
 
@@ -192,6 +197,7 @@ const getList = async () => {
   level.value = res.data.level
   profit.value = res.data.profit
   totalCost.value = res.data.total_cost
+  totalReceCost.value = res.data.total_rece_cost
   // List.value = res.data.list.filter(item => item.is_active == 1)
   // console.log(List);
   // List2.value = res.data.list.filter(item => item.is_active != 1)

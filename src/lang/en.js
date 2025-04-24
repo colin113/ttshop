@@ -633,6 +633,7 @@ export default {
 		vipMerch: "VIP Merchants",
 		dataCount: "Statistics",
 		totalCost: "VIP merchant total turnover",
+		totalReceCost: "VIP delivery total flow",
 		checkTime: "Statistics time:",
 		qiDays: "7 days",
 		swDays: "15 days",
