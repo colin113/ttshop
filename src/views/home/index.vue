@@ -117,9 +117,9 @@ const getNextData = () => {
   }
 }
 
-const intervalId  = ref()
+const intervalId = ref()
 const getNoticeDataInterval = () => {
-  intervalId.value=setInterval(async () => {
+  intervalId.value = setInterval(async () => {
     if (startRequest.value) {
       await getNoticeData()
     }
@@ -184,8 +184,15 @@ const imgs = ref([{
 const userSettings = ref([{
   title: t("home.humanCustomerService"), //人工客服
   icon: new URL('@/assets/image/home1/humanCustomerService.png', import.meta.url).href,
-  path: '/service'
+  path: '/service',
+  number: '1',
 }, {
+  title: t("home.humanCustomerService") + " 2", //人工客服2
+  icon: new URL('@/assets/image/home1/humanCustomerService.png', import.meta.url).href,
+  path: '/service',
+  number: '2',
+},])
+const shopSettings = ref([{
   title: t("home.shopSettings"), //店铺设置
   icon: new URL('@/assets/image/home1/shopSettings.png', import.meta.url).href,
   path: '/baseinfo'
@@ -197,7 +204,7 @@ onBeforeMount(() => {
   userStore.toGetMerInfo()
 })
 
-onBeforeUnmount(()=>{
+onBeforeUnmount(() => {
   stopNoticeDataInterval()
 })
 
@@ -405,7 +412,7 @@ text-overflow: ellipsis;">{{ userStore.MerInfo.mer_info }}</span>
       <view class="mx-3">
         <view class="grid grid-cols-2 grid-flow-row gap-x-6 mx-3  py-0">
           <div class="flex justify-center items-center py-3 p-4 bg-white back_4" v-for="item in userSettings"
-               @click="router.push(item.path)" :key="index">
+               @click="router.push({ path: item.path, query: { number: item.number } })" :key="index">
             <div class="flex container" style="width: 20%;">
               <img :src="item.icon" class="w-7 h-7 my-2" alt="">
             </div>
@@ -419,6 +426,22 @@ text-overflow: ellipsis;">{{ userStore.MerInfo.mer_info }}</span>
           </div>
         </view>
       </view>
+
+      <div class="mx-3 bg-white mt-1 rounded-md back_4">
+        <div class="flex items-center py-3 p-4 back_4 gap-x-2 rounded-b-lg" v-for="item in shopSettings"
+             @click="router.push(item.path)" :key="index">
+          <div class="flex container" style="width: auto;">
+            <img :src="item.icon" class="w-7 h-7 my-2" alt="">
+          </div>
+          <div style="width: 80%;padding-left: .2rem;">
+            <span class="text-sm text-neutral-500">{{ item.title }}</span>
+          </div>
+          <div
+              style="width:10%;height: 100%;align-items: center;display: flex;justify-content: flex-end;">
+            <van-icon name="arrow"/>
+          </div>
+        </div>
+      </div>
       <!--图表组件-->
       <div class="mx-3 bg-white mt-3 rounded-md back_4">
         <div class="p-6 text-[#141A52] -mb-10">{{ $t("home.salesDataCurve") }}</div>
@@ -523,10 +546,12 @@ body {
   top: 0;
   z-index: 1;
 }
+
 .modal-content-scrollable {
   max-height: calc(30vh - 120px); /* 减去标题、边距和底部空间 */
   overflow-y: auto;
 }
+
 .scroll-content {
   width: 100%;
   height: 140px;
