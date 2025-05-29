@@ -18,6 +18,7 @@ import {
 } from 'vue-i18n';
 import {Modal} from 'ant-design-vue';
 import {onBeforeUnmount} from "vue";
+import {showFailToast, showSuccessToast} from "vant";
 
 
 //多语言
@@ -128,6 +129,15 @@ const getNoticeDataInterval = () => {
 
 const stopNoticeDataInterval = () => {
   clearInterval(intervalId.value)
+}
+
+const itemJump = (path) => {
+  if (path === '/storeExpress') {
+    showFailToast(t("home.noOpen"));
+    return;
+  }
+  // 否则正常跳转
+  router.push(path);
 }
 
 /*=====数据折叠====*/
@@ -399,7 +409,8 @@ text-overflow: ellipsis;">{{ userStore.MerInfo.mer_info }}</span>
       <div class="mx-3 bg-white  mt-3 rounded-md back_4">
         <div class="grid grid-cols-4 grid-flow-row gap-x-2 mx-3 rounded-b-lg mt-3 text-center">
           <div class="flex flex-col justify-center items-center py-3" v-for="item in imgs"
-               @click="router.push(item.path)" :key="index">
+               @click="itemJump(item.path)" :key="index">
+            <!--               @click="router.push(item.path)" :key="index">-->
             <div class="flex justify-center container" style="height: 50%;">
               <img :src="item.icon" class="w-7 h-7 my-2" alt="">
             </div>

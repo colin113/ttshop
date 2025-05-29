@@ -29,6 +29,7 @@ export default {
 		withdrawal: "提现",
 		distributionCenter: "铺货中心",
 		salesDataCurve: "销售数据曲线",
+		noOpen: "暂时未开放",
 	},
 	tabbar: {
 		home: "首页",

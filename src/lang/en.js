@@ -29,6 +29,7 @@ export default {
 		withdrawal: "Withdrawal",
 		distributionCenter: "Distribution Center",
 		salesDataCurve: "Sales Data Curve",
+		noOpen: "Not open yet",
 	},
 	tabbar: {
 		home: "Home",
