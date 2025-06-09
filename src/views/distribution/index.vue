@@ -59,6 +59,14 @@
 	//   const res = await productList(data);
 	//   List.value = res.list
 	// }
+
+  //最小价格
+  const minPrice = ref(0);
+  //最大价格
+  const maxPrice = ref(10000);
+  //是否开启价格筛选
+  const isPriceFiltering = ref(false);
+
 	//商品列表下拉刷新
 	const loading = ref(false);
 	const finished = ref(false);
@@ -214,13 +222,6 @@
 	const value = ref([0, 50]);
 	// const onChange = (value) => showToast('当前值：' + value[0] * 100 + value[1] * 100);
 
-	//最小价格
-	const minPrice = computed(() => value.value[0] * 100);
-	//最大价格
-	const maxPrice = computed(() => value.value[1] * 100);
-	//是否开启价格筛选
-	const isPriceFiltering = ref(false);
-
 
 	const screen_item = () => {
 		loading.value = true;
@@ -334,19 +335,23 @@ border-radius: 6px;border:none;" @click="add">
 				<van-switch v-model="isPriceFiltering" active-color="#009996" inactive-color="#dcdee0" />
 			</div>
 			<div class="bg-white my-4 rounded p-6">
-				<div class="flex justify-between items-center ">
-					<div>
+				<div>
+					<div class="flex justify-between items-center">
 						<span>{{ $t("distribution.mini") }}</span>
-						<span>{{ minPrice }}</span>
+<!--						<span>{{ minPrice }}</span>-->
+            <van-field style="height:auto;line-height: 40px; border-radius: 5px; border: 2px solid #F8F8F8;text-align: center"
+                       min="0" max="10000" v-model="minPrice" maxlength="5" type="digit" placeholder="0" />
 					</div>
-					<div>
+					<div class="flex justify-between items-center" style="margin-top: 10px;">
 						<span>{{ $t("distribution.max") }}</span>
-						<span>{{ maxPrice }}</span>
+<!--						<span>{{ maxPrice }}</span>-->
+            <van-field style="height:auto;line-height: 40px; border-radius: 5px; border: 2px solid #F8F8F8;text-align: center"
+                       min="0" max="10000" v-model="maxPrice" maxlength="5" type="digit" placeholder="10000" />
 					</div>
 				</div>
-				<div class="flex justify-center items-center bg-white mt-10 mb-3">
-					<van-slider button-size="1.3rem" active-color="#009996" v-model="value" range />
-				</div>
+<!--				<div class="flex justify-center items-center bg-white mt-10 mb-3">-->
+<!--					<van-slider button-size="1.3rem" active-color="#009996" v-model="value" range />-->
+<!--				</div>-->
 			</div>
 			<div class="text-sm text-white ml-auto p-3 bg-black rounded-md text-center mb-6 btn flex justify-center items-center"
 				@click="screen_item()">
