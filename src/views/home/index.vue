@@ -169,27 +169,28 @@ const list = [{
   }
 ];
 //页面导航选项卡
-const imgs = ref([{
-  title: t("home.refundOrders"), //退款订单
-  icon: new URL('@/assets/image/home1/refundOrders.png', import.meta.url).href,
-  path: '/refundRequest'
-},
-  {
-    title: t("home.shopExpressLane"), //店铺直通车
-    icon: new URL('@/assets/image/home1/shopExpressLane.png', import.meta.url).href,
-    path: '/storeExpress'
-  },
-
+const imgs = ref([
   {
     title: t("home.withdrawal"), //提现
     icon: new URL('@/assets/image/home1/withdrawal.png', import.meta.url).href,
     path: '/withdraw'
   },
   {
+    title: t("my.financialRecords"), //资金记录
+    icon: new URL('@/assets/image/my/financialRecords.png', import.meta.url).href,
+    path: '/fundsRecords'
+  },
+
+  {
     title: t("home.distributionCenter"), //铺货中心
     icon: new URL('@/assets/image/home1/distributionCenter.png', import.meta.url).href,
     path: '/distribution'
-  }
+  },
+  {
+    title: t("home.refundOrders"), //退款订单
+    icon: new URL('@/assets/image/home1/refundOrders.png', import.meta.url).href,
+    path: '/refundRequest'
+  },
 ])
 const userSettings = ref([{
   title: t("home.humanCustomerService"), //人工客服
@@ -414,7 +415,7 @@ text-overflow: ellipsis;">{{ userStore.MerInfo.mer_info }}</span>
             <div class="flex justify-center container" style="height: 50%;">
               <img :src="item.icon" class="w-7 h-7 my-2" alt="">
             </div>
-            <div style="height: 50%;">
+            <div style="height: 50%;padding-top: 4px">
               <span class="text-sm text-neutral-500">{{ item.title }}</span>
             </div>
           </div>
