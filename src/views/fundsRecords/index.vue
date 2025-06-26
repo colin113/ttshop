@@ -97,8 +97,7 @@
 	const isBuyTrainBill = ref(true)
 	const onload = () => {
 		Promise.allSettled([fundsRecords(fundsQuery.value), buyTrainBill(fundsQuery2.value)]).then(res => {
-			console.log(res);
-			loading.value = false
+			// console.log(res);
 			let number = parseInt(fundsQuery.value.page);
 			number++;
 			fundsQuery.value.page = number.toString();
@@ -118,14 +117,13 @@
 					orderList.value.push(...res[1].value.data.list)
 				}
 			}
-			orderList.value.sort((b, a) => a.createtime.localeCompare(b.createtime) || a.createtime
-				.localeCompare(b
-					.createtime));
+			// orderList.value.sort((b, a) => a.createtime.localeCompare(b.createtime) || a.createtime.localeCompare(b.createtime));
 
-			console.log(orderList.value);
+			console.log(orderList.value.length);
 			if (!isFundsRecords.value && !isBuyTrainBill.value) {
 				finished.value = true;
 			}
+      loading.value = false
 		})
 		// fundsRecords(fundsQuery.value).then(res => {
 		// 	loading.value = false
