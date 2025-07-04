@@ -200,7 +200,7 @@ const userSettings = ref([{
 }, {
   title: t("home.humanCustomerService") + " 2", //人工客服2
   icon: new URL('@/assets/image/home1/humanCustomerService.png', import.meta.url).href,
-  path: '/service',
+  path: '/servicet',
   number: '2',
 },])
 const shopSettings = ref([{

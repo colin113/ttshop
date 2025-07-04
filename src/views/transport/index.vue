@@ -84,7 +84,7 @@
 		//1=运输中,2=已到达,3=待结算,4=已收货',
 		if (getdata.value.delivery_status == 1) {
 			delivery_status.value = t('transoprt.incoming')
-			delivery_data.value = t('transoprt.arrivedData') + " " + addDaysToDate(getdata.value.createtime)
+		//	delivery_data.value = t('transoprt.arrivedData') + " " + addDaysToDate(getdata.value.createtime)
 			// } else if (getdata.value.delivery_status == 2) {
 			//   delivery_status.value = t('transoprt.arrived')
 			//   delivery_data.value = t('transoprt.arrivedData') + " " + addDaysToDate(getdata.value.createtime)

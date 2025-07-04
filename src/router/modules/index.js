@@ -505,6 +505,17 @@ export default [
 			keepAlive: true,
 		},
 	},
+	//人工客服2
+	{
+		path: "/servicet",
+		name: "servicet",
+		component: () => import("@/views/servicet/index.vue"),
+		meta: {
+			title: i18n.global.t("router.servicet"),
+			requireAuth: false,
+			keepAlive: true,
+		},
+	},
 	//认证邀请码
 	{
 		path: "/code",

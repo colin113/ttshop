@@ -65,7 +65,7 @@ const copy = (textToCopy) => {
 <template>
   <div class="bg"></div>
   <header>
-    <van-nav-bar :title="$t('vip.title')" :border="false" :left-text="$t('goback')" left-arrow
+    <van-nav-bar :title="$t('alliance.alliance')" :border="false" :left-text="$t('goback')" left-arrow
                  @click-left="onClickLeft"/>
   </header>
   <main class="mx-3">

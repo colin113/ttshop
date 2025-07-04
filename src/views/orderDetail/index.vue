@@ -143,7 +143,7 @@
 					</div>
 					<div class="py-2 text-sm flex items-center justify-between">
 						<div class="w-[30%] text-sm">{{ $t("orderDetail.phoneNumber") }}</div>
-						<div>{{ getdata.user_phone }}</div>
+						<div>+1 {{ getdata.user_phone }}</div>
 					</div>
 					<div class="py-2 text-sm flex items-center justify-between">
 						<div class="w-[30%] text-sm">{{ $t("orderDetail.orderTime") }}</div>

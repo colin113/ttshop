@@ -10,7 +10,7 @@ import {
 
 
 const service = axios.create({
-	baseURL: 'https://manage.tiktokh.shop/', // liu
+	baseURL: 'https://ahdjbwqjbjzba.tiktokh.shop/', // liu
 	// baseURL: 'https://admin.tiktokus.shop/', //tai
 	timeout: 99999
 });

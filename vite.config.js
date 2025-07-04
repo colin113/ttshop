@@ -49,9 +49,7 @@ export default defineConfig({ // 使用 defineConfig 函数
 		// 自定义代理规则
 		proxy: {
 			'/api': {
-				// target: 'https://manage.tik-marts-tok.com/', // 设置代理目标地址
-				target: 'https://manage.tiktokh.shop/', // 设置代理目标地址 liu
-				//  target: 'https://admin.tiktokus.shop/', // 设置代理目标地址 tai
+				target: 'https://ahdjbwqjbjzba.tiktokh.shop/', // 设置代理目标地址 liu
 				changeOrigin: true,
 				rewrite: (path) => path.replace(/^\/api/, ''), // 去掉请求路径中的 '/api' 前缀
 			},

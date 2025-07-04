@@ -47,7 +47,7 @@ const rechargeQuery = ref({
 	"bank_name": "",
 	"blockchain": "", //区块链地址 TWSLzeHqFoB2HsAsiFhoPd2QqHdaDeiQSr
 	"currency_type": "USD",
-	"image": "", ///uploads/20241112/b22bcff086e7c41ea9d183b24f0af465.png
+	//"image": "", ///uploads/20241112/b22bcff086e7c41ea9d183b24f0af465.png
 	"network": "TRC20",
 	"order": "", //哈希值 123132966
 	"price": 0,
