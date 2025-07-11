@@ -334,6 +334,8 @@ export default {
         noAccount: "No account?",
         clickToRegister: "Click to register",
         forgotPassword: "Forgot Password",
+        phoneCode: "Phone encoding",
+        enterPhoneCode: "Please enter phone code",
         storeLogo: "Shop Logo",
         storeName: "Shop Name",
         enterStorename: "Please upload store name",

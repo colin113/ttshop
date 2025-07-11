@@ -120,13 +120,15 @@
 			});
 			//添加待提货中运输状态
 			List.value.forEach(item => {
-				if (item.delivery_status === 1) {
+        if (item.status === 1 && item.is_pick===0) {
+          item.deliverystatus = t("order.awaitingPickup");
+        }else if (item.status === 1 && item.is_pick===1) {
+          item.deliverystatus = t("order.waitingForShipment");
+        } else if (item.delivery_status === 1) {
 					item.deliverystatus = t("order.inTransit");
-				} else if (item.delivery_status === 2) {
+				} else if (item.delivery_status === 4 && item.status === 2) {
 					item.deliverystatus = t("order.reached");
-				} else if (item.delivery_status === 3) {
-					item.deliverystatus = t("order.pendingSettlement");
-				} else {
+				} else if (item.delivery_status === 4  && item.status > 2) {
 					item.deliverystatus = t("order.settled");
 				}
 			});

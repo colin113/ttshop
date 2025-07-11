@@ -136,7 +136,7 @@ const rechargeRate = ref(0);
 //获取汇率
 const requestRate = async () => {
   const res = await getRate();
-  rechargeRate.value = res.data.rate
+  rechargeRate.value = res.data.extractRate
 }
 
 //提交接口

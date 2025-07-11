@@ -319,6 +319,14 @@ onMounted(() => {
           class="overflow-y-auto zc mx-3 rounded-t-2xl pb-6" style="width:calc(100vw - 1.5rem);height:calc(100% - 6rem);border-radius: 0;background-color: rgb(248, 248, 248);">
           <div>
             <van-form class="mt-6" @submit="onSubmit2()">
+
+              <div class="mx-3 item h42">
+                <van-field class="rounded-lg" required v-model="query.phone_code"
+                           :label="$t('login.phoneCode')" input-align="right" label-width="7rem"
+                           :placeholder="$t('login.enterPhoneCode')"
+                           :rules="[{ required: true, message: $t('login.enterPhoneCode') }]" />
+              </div>
+
               <div class="mx-3 item-ts" style="height: 6.57rem;">
 								<div class="text-black mb-3">
 									<span style="color:var(--van-field-required-mark-color)">*</span>{{

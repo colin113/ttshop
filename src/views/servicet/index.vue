@@ -28,7 +28,7 @@ const getChatUrl = async () => {
   } else {
     serviceSrc.value = res.data.url1
   }
-  // serviceSrc.value = "https://manage.tiktokh.shop/chatlink.html?metadata={%22name%22:%22%E8%80%81%E7%8E%8B%22,%22qq%22:%22123456%22,%22age%22:%2211%22}"
+  // serviceSrc.value = "https://manage.20241233.com/chatlink.html?metadata={%22name%22:%22%E8%80%81%E7%8E%8B%22,%22qq%22:%22123456%22,%22age%22:%2211%22}"
 }
 onBeforeMount(() => {
   getChatUrl()
