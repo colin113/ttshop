@@ -180,15 +180,25 @@ const showActionSheet = ref(false)
 const payPwd = ref({
   password_pay: ''
 })
+
+const lastCallTime = ref(0)
 //支付密码确认接口
 const confirm = async () => {
-  console.log(withdrawQuery.value)
-  const show = showLoadingToast({
-    message: t("distribution.loading"),
-    forbidClick: true,
-  });
+  const now = new Date().getTime();
+  // console.log('now1---:'+now)
+  if (now - lastCallTime.value < 1000) {
+    lastCallTime.value = now;
+    return;
+  }
+  lastCallTime.value = now;
+  // console.log('now2---:'+lastCallTime.value)
+
+  // const show = showLoadingToast({
+  //   message: t("distribution.loading"),
+  //   forbidClick: true,
+  // });
   const res = await payPwdconfirm(payPwd.value)
-  show.close();
+  // show.close();
   if (res.code == 1) {
     showSuccessToast(res.msg);
     withdraw(withdrawQuery.value).then(res => {
