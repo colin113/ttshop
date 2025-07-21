@@ -45,9 +45,9 @@
 	const onSelect = (item) => {
 		// 默认情况下点击选项时不会自动收起
 		// 可以通过 close-on-click-action 属性开启自动收起
-		console.log(item)
+		// console.log(item)
 		selects.value = item.name;
-		console.log(selects.value);
+		// console.log(selects.value);
 		show.value = false;
 		showToast(item.name);
 		if (selects.value === t("fundsRecords.redcord4")) {
@@ -94,9 +94,15 @@
 	const loading = ref(false);
 	const finished = ref(false);
 	const isFundsRecords = ref(true)
-	const isBuyTrainBill = ref(true)
+  const isBuyTrainBill = ref(true)
+  const dataSize = ref(0)
+  const scrollRef = ref(null);
 	const onload = () => {
+    if (loading.value || finished.value) return;
+    loading.value = true;
 		Promise.allSettled([fundsRecords(fundsQuery.value), buyTrainBill(fundsQuery2.value)]).then(res => {
+      dataSize.value=dataSize.value+res[0].value.data.list.length+res[1].value.data.list.length;
+      // console.log("dataSize-->"+dataSize.value)
 			// console.log(res);
 			let number = parseInt(fundsQuery.value.page);
 			number++;
@@ -119,37 +125,26 @@
 			}
 			// orderList.value.sort((b, a) => a.createtime.localeCompare(b.createtime) || a.createtime.localeCompare(b.createtime));
 
-			console.log(orderList.value.length);
+			console.log("order--->"+orderList.value.length);
+      // console.log("handleScroll--->"+isFundsRecords.value+"-->"+isBuyTrainBill.value);
 			if (!isFundsRecords.value && !isBuyTrainBill.value) {
 				finished.value = true;
 			}
       loading.value = false
-		})
-		// fundsRecords(fundsQuery.value).then(res => {
-		// 	loading.value = false
-		// 	let number = parseInt(fundsQuery.value.page);
-		// 	console.log(res.data)
-		// 	number++;
-		// 	fundsQuery.value.page = number.toString();
-		// 	if (res.data.list.length <= 0) {
-		// 		finished.value = true;
-		// 	} else {
-		// 		orderList.value.push(...res.data.list)
-		// 	}
-		// })
-		// buyTrainBill(fundsQuery.value).then(res => {
+		}).catch(() => {
+      loading.value = false; // 确保异常时也解锁
+    });
 
-		// })
 	}
-
-	//加载提示
-	// showLoadingToast({
-	//   message: '加载中...',
-	//   forbidClick: true,
-	// });
-	// onBeforeMount(()=>{
-	//   showLoadingToast()
-	// })
+  const handleScroll = () => {
+    const el = scrollRef.value;
+    if (!el || loading.value || finished.value) return;
+    // console.log("handleScroll--->"+!el+"-->"+loading.value+"-->"+finished.value);
+    if (el.scrollTop + el.clientHeight >= el.scrollHeight - 10) {
+      // 滚动到底部（20px容差）
+      onload();
+    }
+  };
 	onMounted(() => {
 		onload()
 	})
@@ -169,8 +164,9 @@
 		<div v-if="orderList.length<=0">
 			<van-empty :description="$t('fundsRecords.norecord')" :image="img" image-size="17rem" />
 		</div>
-		<van-list v-model:loading="loading" :finished="finished" :finished-text="$t('fundsRecords.nomore')"
-			@load="onload()" :immediate-check="false">
+<!--		<van-list v-model:loading="loading" :finished="finished" :finished-text="$t('fundsRecords.nomore')"-->
+<!--			@load="onload()" :immediate-check="false">-->
+    <div style="height: 90vh;overflow-y: auto; " @scroll="handleScroll" ref="scrollRef">
 			<div class="bg-white rounded-md flex mb-3 h-[7rem]" style="box-shadow: 0 1px 3px 0 rgba(0,0,0,0.08);"
 				v-for="item in orderList" :key="item.id">
 				<div class="flex justify-center py-5 mx-3 w-[5rem]">
@@ -206,7 +202,11 @@
 					</div>
 				</div>
 			</div>
-		</van-list>
+      <div v-if="loading" class="w-full text-center py-4 text-gray-400">{{ $t("distribution.loading") }}</div>
+      <div v-if="finished" class="w-full text-center py-4 text-gray-400">{{ $t("distribution.nomore") }}</div>
+    </div>
+
+<!--		</van-list>-->
 	</main>
 	<van-action-sheet v-model:show="show" :actions="actions" @select="onSelect" />
 </template>
