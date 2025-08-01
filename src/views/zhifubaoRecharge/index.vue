@@ -126,22 +126,45 @@
 	});
 
   const changePrice = (e) => {
-
-
-    const value = e.target.value.trim(); // 去除空格
-
-    // 验证是否是合法数字格式（支持小数点）
-    if (/^(0|[1-9]\d*)(\.\d*)?$/.test(value)) {
-      price1.value = Number(e.target.value);
-      torechargedata.value.price = price1.value;
-      rechargeFact.value = (price1.value / rechargeRate.value).toFixed(2);
-    } else {
-      // 如果输入无效，则保留之前的值或置为空
-      torechargedata.value.price = torechargedata.value.price || 0;
-    }
-
-    e.target.value = value; // 更新输入框的值，防止非法字符出现
+    price1.value = fomartNum(e.target.value);
+    torechargedata.value.price = price1.value;
+    rechargeFact.value = (price1.value / rechargeRate.value).toFixed(2);
   }
+
+  const fomartNum = (num) => {
+    // 移除非法字符，只允许数字和小数点
+    num = num.replace(/[^\d.]/g, '');
+    // 只保留第一个小数点
+    num = num.replace(/\.{2,}/g, '.');
+    num = num.replace('.', '#').replace(/\./g, '').replace('#', '.');
+    // 保证小数点后最多两位
+    if (num.indexOf('.') !== -1) {
+      const [integerPart, decimalPart] = num.split('.');
+      num = integerPart + '.' + decimalPart.slice(0, 2);
+    }
+    // 去除前导0（除非是 "0."）
+    if (num !== '' && num !== '0' && !num.startsWith('0.')) {
+      num = num.replace(/^0+/, '');
+    }
+    return num;
+  }
+
+  // const changePrice = (e) => {
+  //
+  //   const value = e.target.value.trim(); // 去除空格
+  //
+  //   // 验证是否是合法数字格式（支持小数点）
+  //   if (/^(0|[1-9]\d*)(\.\d*)?$/.test(value)) {
+  //     price1.value = Number(e.target.value);
+  //     torechargedata.value.price = price1.value;
+  //     rechargeFact.value = (price1.value / rechargeRate.value).toFixed(2);
+  //   } else {
+  //     // 如果输入无效，则保留之前的值或置为空
+  //     torechargedata.value.price = torechargedata.value.price || 0;
+  //   }
+  //
+  //   e.target.value = value; // 更新输入框的值，防止非法字符出现
+  // }
 
 	const onSubmit = () => {
 
@@ -149,7 +172,6 @@
 			showFailToast(t("walletrecharge.uprechargevoucher"));
 			return;
 		}
-
 
 		loadingToast();
 		torechargedata.value.network = network1.value;
@@ -177,7 +199,6 @@
 
 	const goToExternalSite = (url) => {
 		// console.log("type----:"+rechargeType.value)
-		console.log("type----11111:" + url)
 		if (rechargeType.value == "2") {
 			// router.push({ path: '/imageShow', query: { imgUrl: url } })
 			showSuccessToast(res.msg);
