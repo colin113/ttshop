@@ -11,7 +11,7 @@ import {
 
 const service = axios.create({
 	baseURL: 'https://ahdjbwqjbjzba.20248888.net/', // liu
-	// baseURL: 'https://admin.tiktokus.shop/', //tai
+	//baseURL: 'https://d3n45jc5w67sb2.cloudfront.net/', //tai
 	timeout: 99999
 });
 
@@ -56,7 +56,7 @@ service.interceptors.response.use(
 			const userStore = useUserStore();
 			userStore.nologin()
 			// useRouter().push('/login');
-			location.href = '/login'
+			location.href = '/'
 			// console.log(11)
 			showFailToast(error.response.data.msg)
 		}

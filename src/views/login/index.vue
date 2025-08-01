@@ -240,6 +240,7 @@
 		})
 	}
 	onMounted(() => {
+    showLogin.value = t("login.login")
 		defautlanguage()
 	});
 </script>
@@ -267,7 +268,7 @@
 					<span class="font-semibold text-3xl text-white">TikTok Mall</span>
 				</div>
 			</div>
-			<div class="mt-32" v-if="!showLogin">
+<!--			<div class="mt-32" v-if="!showLogin">
 				<div class="pt-10 px-10">
 					<van-button class="btn" style="height:48px;color: #009996;" round block color="#fff"
 						@click.stop="showLogin = $t('login.register')">
@@ -279,7 +280,7 @@
 						@click.stop="showLogin = $t('login.login')">{{ $t("login.login") }}
 					</van-button>
 				</div>
-			</div>
+			</div>-->
 			<!--登录-->
 			<transition name="van-slide-up">
 				<div class="h-3/5 rounded-t-2xl fixed bottom-0" v-if="showLogin === $t('login.login')"
@@ -308,7 +309,7 @@
 									type="password" :rules="[{ required: true, message: $t('login.enterPassword') }]" />
 							</div>
 						</div>
-						<div class="flex mx-3 justify-between mt-6">
+<!--						<div class="flex mx-3 justify-between mt-6">
 							<div>
 								<span class="text-white">{{ $t("login.noAccount") }}</span>
 								<span class="pl-1.5 text-blue-500" style="color: #009996;"
@@ -320,7 +321,7 @@
 									@click="router.push('/forgetPwd')">{{
 									$t("login.forgotPassword") }}</span>
 							</div>
-						</div>
+						</div>-->
 						<div class="bg-black mx-3 h-16 flex justify-center items-center text-white mt-10">
 							<van-button style="background-color:  #009996;" native-type="submit" @click="toHome"> {{
 								$t("login.login") }}</van-button>
