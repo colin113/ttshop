@@ -88,7 +88,10 @@
 	//滚动加载
 	const loading = ref(false);
 	const finished = ref(false);
+  const scrollRef = ref(null);
 	const onload = () => {
+    if (loading.value || finished.value) return;
+    loading.value = true;
 		withdrawRecord(query.value).then(res => {
 			loading.value = false
 			let number = parseInt(query.value.page);
@@ -105,8 +108,17 @@
 		})
 	}
 
+  const handleScroll = () => {
+    const el = scrollRef.value;
+    if (!el || loading.value || finished.value) return;
+    // console.log("handleScroll--->"+!el+"-->"+loading.value+"-->"+finished.value);
+    if (el.scrollTop + el.clientHeight >= el.scrollHeight - 10) {
+      // 滚动到底部（20px容差）
+      onload();
+    }
+  };
 	onMounted(() => {
-		loading.value = true
+		// loading.value = true
 		onload()
 	})
 </script>
@@ -125,8 +137,9 @@
 			<van-empty :description="$t('withdrawRecord.empty')" :image="img" image-size="17rem">
 			</van-empty>
 		</div>
-		<van-list v-model:loading="loading" :finished="finished"
-			:finished-text="(List.length>0)?$t('withdrawRecord.noMore'):''" @load="onload()" :immediate-check="false">
+    <div style="height: 88vh;overflow-y: auto; " @scroll="handleScroll" ref="scrollRef">
+<!--		<van-list v-model:loading="loading" :finished="finished"-->
+<!--			:finished-text="(List.length>0)?$t('withdrawRecord.noMore'):''" @load="onload()" :immediate-check="false">-->
 			<div class="bg-white mx-3 mt-4  rounded-md back_4 p-2" v-for="item in List " :key="item.extract_id">
 				<div class="flex justify-between mx-3">
 					<div class="title">{{ $t("withdrawRecord.orderNumber") }}</div>
@@ -158,7 +171,9 @@
 					</div>
 				</div>
 			</div>
-		</van-list>
+      <div v-if="loading" class="w-full text-center py-4 text-gray-400">{{ $t("distribution.loading") }}</div>
+      <div v-if="finished" class="w-full text-center py-4 text-gray-400">{{ $t("distribution.nomore") }}</div>
+    </div>
 	</main>
 	<van-action-sheet v-model:show="show" :actions="actions" @select="onSelect" />
 </template>

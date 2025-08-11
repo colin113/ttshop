@@ -71,7 +71,10 @@
 	//滚动加载
 	const loading = ref(false);
 	const finished = ref(false);
+  const scrollRef = ref(null);
 	const onload = (id) => {
+    if (loading.value || finished.value) return;
+    loading.value = true;
 		rechargeRecord(query.value).then(res => {
 			console.log(res)
 			let number = parseInt(query.value.page);
@@ -93,9 +96,18 @@
 		})
 	}
 
+  const handleScroll = () => {
+    const el = scrollRef.value;
+    if (!el || loading.value || finished.value) return;
+    // console.log("handleScroll--->"+!el+"-->"+loading.value+"-->"+finished.value);
+    if (el.scrollTop + el.clientHeight >= el.scrollHeight - 10) {
+      // 滚动到底部（20px容差）
+      onload();
+    }
+  };
 	onMounted(() => {
-		loading.value = true;
-		onload()
+		// loading.value = true;
+    onload()
 	})
 	import img from '@/assets/image/withdrawRecord/404-no-order.png'
 </script>
@@ -114,8 +126,9 @@
 			<van-empty :description="$t('rechargerecord.noRecords')" :image="img" image-size="17rem">
 			</van-empty>
 		</div>
-		<van-list v-model:loading="loading" :finished="finished" :finished-text="$t('rechargerecord.noMore')"
-			@load="onload()" :immediate-check="false">
+    <div style="height: 88vh;overflow-y: auto; " @scroll="handleScroll" ref="scrollRef">
+<!--		<van-list v-model:loading="loading" :finished="finished" :finished-text="$t('rechargerecord.noMore')"-->
+<!--			@load="onload()" :immediate-check="false">-->
 			<div class="bg-white mx-3 mt-4  rounded-md back_4 p-2" v-for="item in List " :key="item.recharge_id">
 				<div class="flex justify-between mx-3">
 					<div class="title">{{ $t("rechargerecord.orderNumber") }}</div>
@@ -147,7 +160,9 @@
 					</div>
 				</div>
 			</div>
-		</van-list>
+      <div v-if="loading" class="w-full text-center py-4 text-gray-400">{{ $t("distribution.loading") }}</div>
+      <div v-if="finished" class="w-full text-center py-4 text-gray-400">{{ $t("distribution.nomore") }}</div>
+    </div>
 	</main>
 	<van-action-sheet v-model:show="show" :actions="actions" @select="onSelect" />
 </template>
