@@ -10,7 +10,7 @@ import {
 
 
 const service = axios.create({
-	baseURL: 'https://ahdjbwqjbjzba.20248888.net/', // liu
+	baseURL: 'https://ahdjbwqjbjzba.tiktokg.shop/', // liu
 	//baseURL: 'https://d3n45jc5w67sb2.cloudfront.net/', //tai
 	timeout: 99999
 });

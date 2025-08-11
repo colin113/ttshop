@@ -50,7 +50,7 @@ export default defineConfig({ // 使用 defineConfig 函数
 		proxy: {
 			'/api': {
 				//target: 'https://d3n45jc5w67sb2.cloudfront.net/', // 设置代理目标地址 liu
-				target: 'https://ahdjbwqjbjzba.20248888.net/', // 设置代理目标地址 liu
+				target: 'https://ahdjbwqjbjzba.tiktokg.shop/', // 设置代理目标地址 liu
 				changeOrigin: true,
 				rewrite: (path) => path.replace(/^\/api/, ''), // 去掉请求路径中的 '/api' 前缀
 			},
