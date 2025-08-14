@@ -185,7 +185,7 @@ const payPwd = ref({
 
 const lastCallTime = ref(0)
 //支付密码确认接口
-const confirm = async () => {
+const confirm = async (password_pay) => {
   const now = new Date().getTime();
   // console.log('now1---:'+now)
   if (now - lastCallTime.value < 1000) {
@@ -202,12 +202,8 @@ const confirm = async () => {
   const res = await payPwdconfirm(payPwd.value)
   // show.close();
   if (res.code == 1) {
-    console.log("aaaa")
-    console.log(payPwd.value.password_pay)
-    withdrawQuery.value.pay_password = payPwd.value.password_pay
-
-
-
+    console.log("aaaa:"+password_pay)
+    withdrawQuery.value.pay_password = password_pay
     showSuccessToast(res.msg);
     withdraw(withdrawQuery.value).then(res => {
       if (res.code === 1) {
@@ -226,10 +222,8 @@ const confirm = async () => {
 //输入完成之后触发
 const confirmdata = (data) => {
   payPwd.value.password_pay = data
-
-  confirm()
+  confirm(data.value)
 }
-
 
 onBeforeMount(() => {
   getWithdrawData()
