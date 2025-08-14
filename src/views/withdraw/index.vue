@@ -149,7 +149,8 @@ const withdrawQuery = ref({
   real_name: "",
   bank_card: "",
   alipay_code: "",
-  bank_name: ""
+  bank_name: "",
+  pay_password: ""
 })
 //提交提现请求
 const onSubmit = () => {
@@ -166,6 +167,7 @@ const onSubmit = () => {
     withdrawQuery.value.currency_type = currencytype.value
     withdrawQuery.value.network = networktype.value
     withdrawQuery.value.blockchain = blockchain.value
+
   } else {
     showFailToast(t("over"))
   }
@@ -200,6 +202,12 @@ const confirm = async () => {
   const res = await payPwdconfirm(payPwd.value)
   // show.close();
   if (res.code == 1) {
+    console.log("aaaa")
+    console.log(payPwd.value.password_pay)
+    withdrawQuery.value.pay_password = payPwd.value.password_pay
+
+
+
     showSuccessToast(res.msg);
     withdraw(withdrawQuery.value).then(res => {
       if (res.code === 1) {
@@ -218,7 +226,7 @@ const confirm = async () => {
 //输入完成之后触发
 const confirmdata = (data) => {
   payPwd.value.password_pay = data
-  console.log(data)
+
   confirm()
 }
 
