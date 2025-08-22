@@ -1,0 +1,571 @@
+  [
+    {
+      "text": "Beijing",
+      "value": "000001",
+      "children": [
+        { "text": "Beijing", "value": "000002" }
+      ]
+    },
+    {
+      "text": "Tianjin",
+      "value": "000003",
+      "children": [
+        { "text": "Tianjin", "value": "000004" }
+      ]
+    },
+    {
+      "text": "Hebei",
+      "value": "000005",
+      "children": [
+        { "text": "Shijiazhuang", "value": "000006" },
+        { "text": "Tangshan", "value": "000007" },
+        { "text": "Qinhuangdao", "value": "000008" },
+        { "text": "Handan", "value": "000009" },
+        { "text": "Xingtai", "value": "000010" },
+        { "text": "Baoding", "value": "000011" },
+        { "text": "Zhangjiakou", "value": "000012" },
+        { "text": "Chengde", "value": "000013" },
+        { "text": "Cangzhou", "value": "000014" },
+        { "text": "Langfang", "value": "000015" },
+        { "text": "Hengshui", "value": "000016" }
+      ]
+    },
+    {
+      "text": "Shanxi",
+      "value": "000017",
+      "children": [
+        { "text": "Taiyuan", "value": "000018" },
+        { "text": "Datong", "value": "000019" },
+        { "text": "Yangquan", "value": "000020" },
+        { "text": "Changzhi", "value": "000021" },
+        { "text": "Jincheng", "value": "000022" },
+        { "text": "Shuozhou", "value": "000023" },
+        { "text": "Jinzhong", "value": "000024" },
+        { "text": "Yuncheng", "value": "000025" },
+        { "text": "Xinzhou", "value": "000026" },
+        { "text": "Linfen", "value": "000027" },
+        { "text": "Lüliang", "value": "000028" }
+      ]
+    },
+    {
+      "text": "Inner Mongolia",
+      "value": "000029",
+      "children": [
+        { "text": "Hohhot", "value": "000030" },
+        { "text": "Baotou", "value": "000031" },
+        { "text": "Wuhai", "value": "000032" },
+        { "text": "Chifeng", "value": "000033" },
+        { "text": "Tongliao", "value": "000034" },
+        { "text": "Ordos", "value": "000035" },
+        { "text": "Hulunbuir", "value": "000036" },
+        { "text": "Bayannur", "value": "000037" },
+        { "text": "Ulanqab", "value": "000038" },
+        { "text": "Hinggan League", "value": "000039" },
+        { "text": "Xilingol League", "value": "000040" },
+        { "text": "Alxa League", "value": "000041" }
+      ]
+    },
+    {
+      "text": "Liaoning",
+      "value": "000042",
+      "children": [
+        { "text": "Shenyang", "value": "000043" },
+        { "text": "Dalian", "value": "000044" },
+        { "text": "Anshan", "value": "000045" },
+        { "text": "Fushun", "value": "000046" },
+        { "text": "Benxi", "value": "000047" },
+        { "text": "Dandong", "value": "000048" },
+        { "text": "Jinzhou", "value": "000049" },
+        { "text": "Yingkou", "value": "000050" },
+        { "text": "Fuxin", "value": "000051" },
+        { "text": "Liaoyang", "value": "000052" },
+        { "text": "Panjin", "value": "000053" },
+        { "text": "Tieling", "value": "000054" },
+        { "text": "Chaoyang", "value": "000055" },
+        { "text": "Huludao", "value": "000056" }
+      ]
+    },
+    {
+      "text": "Jilin",
+      "value": "000057",
+      "children": [
+        { "text": "Changchun", "value": "000058" },
+        { "text": "Jilin", "value": "000059" },
+        { "text": "Siping", "value": "000060" },
+        { "text": "Liaoyuan", "value": "000061" },
+        { "text": "Tonghua", "value": "000062" },
+        { "text": "Baishan", "value": "000063" },
+        { "text": "Songyuan", "value": "000064" },
+        { "text": "Baicheng", "value": "000065" },
+        { "text": "Yanbian Korean Autonomous Prefecture", "value": "000066" }
+      ]
+    },
+    {
+      "text": "Heilongjiang",
+      "value": "000067",
+      "children": [
+        { "text": "Harbin", "value": "000068" },
+        { "text": "Qiqihar", "value": "000069" },
+        { "text": "Jixi", "value": "000070" },
+        { "text": "Hegang", "value": "000071" },
+        { "text": "Shuangyashan", "value": "000072" },
+        { "text": "Daqing", "value": "000073" },
+        { "text": "Yichun", "value": "000074" },
+        { "text": "Jiamusi", "value": "000075" },
+        { "text": "Qitaihe", "value": "000076" },
+        { "text": "Mudanjiang", "value": "000077" },
+        { "text": "Heihe", "value": "000078" },
+        { "text": "Suihua", "value": "000079" },
+        { "text": "Daxing'anling Prefecture", "value": "000080" }
+      ]
+    },
+    {
+      "text": "Shanghai",
+      "value": "000081",
+      "children": [
+        { "text": "Shanghai", "value": "000082" }
+      ]
+    },
+    {
+      "text": "Jiangsu",
+      "value": "000083",
+      "children": [
+        { "text": "Nanjing", "value": "000084" },
+        { "text": "Wuxi", "value": "000085" },
+        { "text": "Xuzhou", "value": "000086" },
+        { "text": "Changzhou", "value": "000087" },
+        { "text": "Suzhou", "value": "000088" },
+        { "text": "Nantong", "value": "000089" },
+        { "text": "Lianyungang", "value": "000090" },
+        { "text": "Huai'an", "value": "000091" },
+        { "text": "Yancheng", "value": "000092" },
+        { "text": "Yangzhou", "value": "000093" },
+        { "text": "Zhenjiang", "value": "000094" },
+        { "text": "Taizhou", "value": "000095" },
+        { "text": "Suqian", "value": "000096" }
+      ]
+    },
+    {
+      "text": "Zhejiang",
+      "value": "000097",
+      "children": [
+        { "text": "Hangzhou", "value": "000098" },
+        { "text": "Ningbo", "value": "000099" },
+        { "text": "Wenzhou", "value": "000100" },
+        { "text": "Jiaxing", "value": "000101" },
+        { "text": "Huzhou", "value": "000102" },
+        { "text": "Shaoxing", "value": "000103" },
+        { "text": "Jinhua", "value": "000104" },
+        { "text": "Quzhou", "value": "000105" },
+        { "text": "Zhoushan", "value": "000106" },
+        { "text": "Taizhou", "value": "000107" },
+        { "text": "Lishui", "value": "000108" }
+      ]
+    },
+    {
+      "text": "Anhui",
+      "value": "000109",
+      "children": [
+        { "text": "Hefei", "value": "000110" },
+        { "text": "Wuhu", "value": "000111" },
+        { "text": "Bengbu", "value": "000112" },
+        { "text": "Huainan", "value": "000113" },
+        { "text": "Ma'anshan", "value": "000114" },
+        { "text": "Huaibei", "value": "000115" },
+        { "text": "Tongling", "value": "000116" },
+        { "text": "Anqing", "value": "000117" },
+        { "text": "Huangshan", "value": "000118" },
+        { "text": "Chuzhou", "value": "000119" },
+        { "text": "Fuyang", "value": "000120" },
+        { "text": "Suzhou", "value": "000121" },
+        { "text": "Lu'an", "value": "000122" },
+        { "text": "Bozhou", "value": "000123" },
+        { "text": "Chizhou", "value": "000124" },
+        { "text": "Xuancheng", "value": "000125" }
+      ]
+    },
+    {
+      "text": "Fujian",
+      "value": "000126",
+      "children": [
+        { "text": "Fuzhou", "value": "000127" },
+        { "text": "Xiamen", "value": "000128" },
+        { "text": "Putian", "value": "000129" },
+        { "text": "Sanming", "value": "000130" },
+        { "text": "Quanzhou", "value": "000131" },
+        { "text": "Zhangzhou", "value": "000132" },
+        { "text": "Nanping", "value": "000133" },
+        { "text": "Longyan", "value": "000134" },
+        { "text": "Ningde", "value": "000135" }
+      ]
+    },
+    {
+      "text": "Jiangxi",
+      "value": "000136",
+      "children": [
+        { "text": "Nanchang", "value": "000137" },
+        { "text": "Jingdezhen", "value": "000138" },
+        { "text": "Pingxiang", "value": "000139" },
+        { "text": "Jiujiang", "value": "000140" },
+        { "text": "Xinyu", "value": "000141" },
+        { "text": "Yingtan", "value": "000142" },
+        { "text": "Ganzhou", "value": "000143" },
+        { "text": "Ji'an", "value": "000144" },
+        { "text": "Yichun", "value": "000145" },
+        { "text": "Fuzhou", "value": "000146" },
+        { "text": "Shangrao", "value": "000147" }
+      ]
+    },
+    {
+      "text": "Shandong",
+      "value": "000148",
+      "children": [
+        { "text": "Jinan", "value": "000149" },
+        { "text": "Qingdao", "value": "000150" },
+        { "text": "Zibo", "value": "000151" },
+        { "text": "Zaozhuang", "value": "000152" },
+        { "text": "Dongying", "value": "000153" },
+        { "text": "Yantai", "value": "000154" },
+        { "text": "Weifang", "value": "000155" },
+        { "text": "Jining", "value": "000156" },
+        { "text": "Tai'an", "value": "000157" },
+        { "text": "Weihai", "value": "000158" },
+        { "text": "Rizhao", "value": "000159" },
+        { "text": "Laiwu", "value": "000160" },
+        { "text": "Linyi", "value": "000161" },
+        { "text": "Dezhou", "value": "000162" },
+        { "text": "Liaocheng", "value": "000163" },
+        { "text": "Binzhou", "value": "000164" },
+        { "text": "Heze", "value": "000165" }
+      ]
+    },
+    {
+      "text": "Henan",
+      "value": "000166",
+      "children": [
+        { "text": "Zhengzhou", "value": "000167" },
+        { "text": "Kaifeng", "value": "000168" },
+        { "text": "Luoyang", "value": "000169" },
+        { "text": "Pingdingshan", "value": "000170" },
+        { "text": "Anyang", "value": "000171" },
+        { "text": "Hebi", "value": "000172" },
+        { "text": "Xinxiang", "value": "000173" },
+        { "text": "Jiaozuo", "value": "000174" },
+        { "text": "Puyang", "value": "000175" },
+        { "text": "Xuchang", "value": "000176" },
+        { "text": "Luohe", "value": "000177" },
+        { "text": "Sanmenxia", "value": "000178" },
+        { "text": "Nanyang", "value": "000179" },
+        { "text": "Shangqiu", "value": "000180" },
+        { "text": "Xinyang", "value": "000181" },
+        { "text": "Zhoukou", "value": "000182" },
+        { "text": "Zhumadian", "value": "000183" }
+      ]
+    },
+      {
+        "text": "Hubei",
+        "value": "000184",
+        "children": [
+          { "text": "Wuhan", "value": "000185" },
+          { "text": "Huangshi", "value": "000186" },
+          { "text": "Shiyan", "value": "000187" },
+          { "text": "Yichang", "value": "000188" },
+          { "text": "Xiangyang", "value": "000189" },
+          { "text": "Ezhou", "value": "000190" },
+          { "text": "Jingmen", "value": "000191" },
+          { "text": "Xiaogan", "value": "000192" },
+          { "text": "Jingzhou", "value": "000193" },
+          { "text": "Huanggang", "value": "000194" },
+          { "text": "Xianning", "value": "000195" },
+          { "text": "Suizhou", "value": "000196" },
+          { "text": "Enshi Tujia and Miao Autonomous Prefecture", "value": "000197" }
+        ]
+      },
+      {
+        "text": "Hunan",
+        "value": "000198",
+        "children": [
+          { "text": "Changsha", "value": "000199" },
+          { "text": "Zhuzhou", "value": "000200" },
+          { "text": "Xiangtan", "value": "000201" },
+          { "text": "Hengyang", "value": "000202" },
+          { "text": "Shaoyang", "value": "000203" },
+          { "text": "Yueyang", "value": "000204" },
+          { "text": "Changde", "value": "000205" },
+          { "text": "Zhangjiajie", "value": "000206" },
+          { "text": "Yiyang", "value": "000207" },
+          { "text": "Chenzhou", "value": "000208" },
+          { "text": "Yongzhou", "value": "000209" },
+          { "text": "Huaihua", "value": "000210" },
+          { "text": "Loudi", "value": "000211" },
+          { "text": "Xiangxi Tujia and Miao Autonomous Prefecture", "value": "000212" }
+        ]
+      },
+      {
+        "text": "Guangdong",
+        "value": "000213",
+        "children": [
+          { "text": "Guangzhou", "value": "000214" },
+          { "text": "Shaoguan", "value": "000215" },
+          { "text": "Shenzhen", "value": "000216" },
+          { "text": "Zhuhai", "value": "000217" },
+          { "text": "Shantou", "value": "000218" },
+          { "text": "Foshan", "value": "000219" },
+          { "text": "Jiangmen", "value": "000220" },
+          { "text": "Zhanjiang", "value": "000221" },
+          { "text": "Maoming", "value": "000222" },
+          { "text": "Zhaoqing", "value": "000223" },
+          { "text": "Huizhou", "value": "000224" },
+          { "text": "Meizhou", "value": "000225" },
+          { "text": "Shanwei", "value": "000226" },
+          { "text": "Heyuan", "value": "000227" },
+          { "text": "Yangjiang", "value": "000228" },
+          { "text": "Qingyuan", "value": "000229" },
+          { "text": "Dongguan", "value": "000230" },
+          { "text": "Zhongshan", "value": "000231" },
+          { "text": "Dongsha Islands", "value": "000232" },
+          { "text": "Chaozhou", "value": "000233" },
+          { "text": "Jieyang", "value": "000234" },
+          { "text": "Yunfu", "value": "000235" }
+        ]
+      },
+      {
+        "text": "Guangxi",
+        "value": "000236",
+        "children": [
+          { "text": "Nanning", "value": "000237" },
+          { "text": "Liuzhou", "value": "000238" },
+          { "text": "Guilin", "value": "000239" },
+          { "text": "Wuzhou", "value": "000240" },
+          { "text": "Beihai", "value": "000241" },
+          { "text": "Fangchenggang", "value": "000242" },
+          { "text": "Qinzhou", "value": "000243" },
+          { "text": "Guigang", "value": "000244" },
+          { "text": "Yulin", "value": "000245" },
+          { "text": "Baise", "value": "000246" },
+          { "text": "Hezhou", "value": "000247" },
+          { "text": "Hechi", "value": "000248" },
+          { "text": "Laibin", "value": "000249" },
+          { "text": "Chongzuo", "value": "000250" }
+        ]
+      },
+      {
+        "text": "Hainan",
+        "value": "000251",
+        "children": [
+          { "text": "Haikou", "value": "000252" },
+          { "text": "Sanya", "value": "000253" },
+          { "text": "Sansha", "value": "000254" }
+        ]
+      },
+      {
+        "text": "Chongqing",
+        "value": "000255",
+        "children": [
+          { "text": "Chongqing", "value": "000256" }
+        ]
+      },
+      {
+        "text": "Sichuan",
+        "value": "000257",
+        "children": [
+          { "text": "Chengdu", "value": "000258" },
+          { "text": "Zigong", "value": "000259" },
+          { "text": "Panzhihua", "value": "000260" },
+          { "text": "Luzhou", "value": "000261" },
+          { "text": "Deyang", "value": "000262" },
+          { "text": "Mianyang", "value": "000263" },
+          { "text": "Guangyuan", "value": "000264" },
+          { "text": "Suining", "value": "000265" },
+          { "text": "Neijiang", "value": "000266" },
+          { "text": "Leshan", "value": "000267" },
+          { "text": "Nanchong", "value": "000268" },
+          { "text": "Meishan", "value": "000269" },
+          { "text": "Yibin", "value": "000270" },
+          { "text": "Guang'an", "value": "000271" },
+          { "text": "Dazhou", "value": "000272" },
+          { "text": "Ya'an", "value": "000273" },
+          { "text": "Bazhong", "value": "000274" },
+          { "text": "Ziyang", "value": "000275" },
+          { "text": "Ngawa Tibetan and Qiang Autonomous Prefecture", "value": "000276" },
+          { "text": "Garzê Tibetan Autonomous Prefecture", "value": "000277" },
+          { "text": "Liangshan Yi Autonomous Prefecture", "value": "000278" }
+        ]
+      },
+      {
+        "text": "Guizhou",
+        "value": "000279",
+        "children": [
+          { "text": "Guiyang", "value": "000280" },
+          { "text": "Liupanshui", "value": "000281" },
+          { "text": "Zunyi", "value": "000282" },
+          { "text": "Anshun", "value": "000283" },
+          { "text": "Tongren", "value": "000284" },
+          { "text": "Qianxinan Buyei and Miao Autonomous Prefecture", "value": "000285" },
+          { "text": "Bijie", "value": "000286" },
+          { "text": "Qiandongnan Miao and Dong Autonomous Prefecture", "value": "000287" },
+          { "text": "Qiannan Buyei and Miao Autonomous Prefecture", "value": "000288" }
+        ]
+      },
+      {
+        "text": "Yunnan",
+        "value": "000289",
+        "children": [
+          { "text": "Kunming", "value": "000290" },
+          { "text": "Qujing", "value": "000291" },
+          { "text": "Yuxi", "value": "000292" },
+          { "text": "Baoshan", "value": "000293" },
+          { "text": "Zhaotong", "value": "000294" },
+          { "text": "Lijiang", "value": "000295" },
+          { "text": "Pu'er", "value": "000296" },
+          { "text": "Lincang", "value": "000297" },
+          { "text": "Chuxiong Yi Autonomous Prefecture", "value": "000298" },
+          { "text": "Honghe Hani and Yi Autonomous Prefecture", "value": "000299" },
+          { "text": "Wenshan Zhuang and Miao Autonomous Prefecture", "value": "000300" },
+          { "text": "Xishuangbanna Dai Autonomous Prefecture", "value": "000301" },
+          { "text": "Dali Bai Autonomous Prefecture", "value": "000302" },
+          { "text": "Dehong Dai and Jingpo Autonomous Prefecture", "value": "000303" },
+          { "text": "Nujiang Lisu Autonomous Prefecture", "value": "000304" },
+          { "text": "Diqing Tibetan Autonomous Prefecture", "value": "000305" }
+        ]
+      },
+      {
+        "text": "Tibet Autonomous Region",
+        "value": "000306",
+        "children": [
+          { "text": "Lhasa", "value": "000307" },
+          { "text": "Chamdo", "value": "000308" },
+          { "text": "Shannan", "value": "000309" },
+          { "text": "Shigatse", "value": "000310" },
+          { "text": "Nagqu", "value": "000311" },
+          { "text": "Ngari", "value": "000312" },
+          { "text": "Nyingchi", "value": "000313" }
+        ]
+      },
+      {
+        "text": "Shaanxi",
+        "value": "000314",
+        "children": [
+          { "text": "Xi'an", "value": "000315" },
+          { "text": "Tongchuan", "value": "000316" },
+          { "text": "Baoji", "value": "000317" },
+          { "text": "Xianyang", "value": "000318" },
+          { "text": "Weinan", "value": "000319" },
+          { "text": "Yan'an", "value": "000320" },
+          { "text": "Hanzhong", "value": "000321" },
+          { "text": "Yulin", "value": "000322" },
+          { "text": "Ankang", "value": "000323" },
+          { "text": "Shangluo", "value": "000324" }
+        ]
+      },
+      {
+        "text": "Gansu",
+        "value": "000325",
+        "children": [
+          { "text": "Lanzhou", "value": "000326" },
+          { "text": "Jiayuguan", "value": "000327" },
+          { "text": "Jinchang", "value": "000328" },
+          { "text": "Baiyin", "value": "000329" },
+          { "text": "Tianshui", "value": "000330" },
+          { "text": "Wuwei", "value": "000331" },
+          { "text": "Zhangye", "value": "000332" },
+          { "text": "Pingliang", "value": "000333" },
+          { "text": "Jiuquan", "value": "000334" },
+          { "text": "Qingyang", "value": "000335" },
+          { "text": "Dingxi", "value": "000336" },
+          { "text": "Longnan", "value": "000337" },
+          { "text": "Linxia Hui Autonomous Prefecture", "value": "000338" },
+          { "text": "Gannan Tibetan Autonomous Prefecture", "value": "000339" }
+        ]
+      },
+      {
+        "text": "Qinghai",
+        "value": "000340",
+        "children": [
+          { "text": "Xining", "value": "000341" },
+          { "text": "Haidong", "value": "000342" },
+          { "text": "Haibei Tibetan Autonomous Prefecture", "value": "000343" },
+          { "text": "Huangnan Tibetan Autonomous Prefecture", "value": "000344" },
+          { "text": "Hainan Tibetan Autonomous Prefecture", "value": "000345" },
+          { "text": "Guoluo Tibetan Autonomous Prefecture", "value": "000346" },
+          { "text": "Yushu Tibetan Autonomous Prefecture", "value": "000347" },
+          { "text": "Haixi Mongol and Tibetan Autonomous Prefecture", "value": "000348" }
+        ]
+      },
+      {
+        "text": "Ningxia",
+        "value": "000349",
+        "children": [
+          { "text": "Yinchuan", "value": "000350" },
+          { "text": "Shizuishan", "value": "000351" },
+          { "text": "Wuzhong", "value": "000352" },
+          { "text": "Guyuan", "value": "000353" },
+          { "text": "Zhongwei", "value": "000354" }
+        ]
+      },
+      {
+        "text": "Xinjiang",
+        "value": "000355",
+        "children": [
+          { "text": "Urumqi", "value": "000356" },
+          { "text": "Karamay", "value": "000357" },
+          { "text": "Turpan", "value": "000358" },
+          { "text": "Hami", "value": "000359" },
+          { "text": "Changji Hui Autonomous Prefecture", "value": "000360" },
+          { "text": "Bortala Mongol Autonomous Prefecture", "value": "000361" },
+          { "text": "Bayingolin Mongol Autonomous Prefecture", "value": "000362" },
+          { "text": "Aksu", "value": "000363" },
+          { "text": "Kizilsu Kirghiz Autonomous Prefecture", "value": "000364" },
+          { "text": "Kashgar", "value": "000365" },
+          { "text": "Hotan", "value": "000366" },
+          { "text": "Ili Kazakh Autonomous Prefecture", "value": "000367" },
+          { "text": "Tacheng", "value": "000368" },
+          { "text": "Altay", "value": "000369" }
+        ]
+      },
+      {
+        "text": "Taiwan",
+        "value": "000370",
+        "children": [
+          { "text": "Taipei", "value": "000371" },
+          { "text": "Kaohsiung", "value": "000372" },
+          { "text": "Tainan", "value": "000373" },
+          { "text": "Taichung", "value": "000374" },
+          { "text": "Kinmen", "value": "000375" },
+          { "text": "Nantou", "value": "000376" },
+          { "text": "Keelung", "value": "000377" },
+          { "text": "Hsinchu", "value": "000378" },
+          { "text": "Chiayi", "value": "000379" },
+          { "text": "New Taipei", "value": "000380" },
+          { "text": "Yilan", "value": "000381" },
+          { "text": "Hsinchu County", "value": "000382" },
+          { "text": "Taoyuan", "value": "000383" },
+          { "text": "Miaoli", "value": "000384" },
+          { "text": "Changhua", "value": "000385" },
+          { "text": "Chiayi County", "value": "000386" },
+          { "text": "Yunlin", "value": "000387" },
+          { "text": "Pingtung", "value": "000388" },
+          { "text": "Taitung", "value": "000389" },
+          { "text": "Hualien", "value": "000390" },
+          { "text": "Penghu", "value": "000391" },
+          { "text": "Lienchiang", "value": "000392" }
+        ]
+      },
+      {
+        "text": "Hong Kong",
+        "value": "000393",
+        "children": [
+          { "text": "Hong Kong Island", "value": "000394" },
+          { "text": "Kowloon", "value": "000395" },
+          { "text": "New Territories", "value": "000396" }
+        ]
+      },
+      {
+        "text": "Macao",
+        "value": "000397",
+        "children": [
+          { "text": "Macau Peninsula", "value": "000398" },
+          { "text": "Islands", "value": "000399" }
+        ]
+      }
+]

@@ -142,6 +142,10 @@ export default {
 		nozero: "请输入正确金额数字",
 		noOver: "不能超出余额",
 		all: "全部",
+		area: "地区",
+		selectArea: "请选择所在地区",
+		selectedArea: "请选择",
+		enterAddress: "请输入地址",
 	},
 	distribution: {
 		all: "全部",

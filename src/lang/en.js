@@ -142,6 +142,10 @@ export default {
         nozero: "Please enter the correct amount",
         noOver: "Cannot exceed balance",
         all: "All",
+        area: "Area",
+        selectArea: "Select region",
+        selectedArea: "Select",
+        enterAddress: "Please enter address",
     },
     distribution: {
         all: "All",

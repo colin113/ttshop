@@ -17,6 +17,8 @@ import {
 import {
   showFailToast
 } from "vant";
+import proviceData from '@/assets/json/provice.json'
+import proviceDataEn from '@/assets/json/provice_en.json'
 //多语言
 const {
   t
@@ -27,6 +29,7 @@ const onClickLeft = () => {
   router.back();
 };
 const userStore = useUserStore();
+const lang = localStorage.getItem('lang');
 /*
   选项卡模块
 */
@@ -91,7 +94,6 @@ const actionsnetwork = [{
 const networktype = ref('')
 const onSelectnetwork = (item) => {
   shownetwork.value = false;
-  console.log(item)
   networktype.value = item.name
 };
 
@@ -150,7 +152,9 @@ const withdrawQuery = ref({
   bank_card: "",
   alipay_code: "",
   bank_name: "",
-  pay_password: ""
+  pay_password: "",
+  province: "",
+  city: ""
 })
 //提交提现请求
 const onSubmit = () => {
@@ -167,7 +171,8 @@ const onSubmit = () => {
     withdrawQuery.value.currency_type = currencytype.value
     withdrawQuery.value.network = networktype.value
     withdrawQuery.value.blockchain = blockchain.value
-
+    withdrawQuery.value.province = provinceValue.value
+    withdrawQuery.value.city = cityValue.value
   } else {
     showFailToast(t("over"))
   }
@@ -202,7 +207,6 @@ const confirm = async (password_pay) => {
   const res = await payPwdconfirm(payPwd.value)
   // show.close();
   if (res.code == 1) {
-    console.log("aaaa:"+password_pay)
     withdrawQuery.value.pay_password = password_pay
     showSuccessToast(res.msg);
     withdraw(withdrawQuery.value).then(res => {
@@ -224,6 +228,22 @@ const confirmdata = (data) => {
   payPwd.value.password_pay = data
   confirm(data.value)
 }
+
+const show = ref(false);
+const fieldValue = ref('');
+const cascaderValue = ref('');
+const provinceValue = ref('');
+const cityValue = ref('');
+const options = (lang == 'zh-CN') ? proviceData : proviceDataEn;
+const onFinish = ({selectedOptions}) => {
+  show.value = false;
+  provinceValue.value = selectedOptions[0].text
+  cityValue.value = selectedOptions[1].text
+  withdrawQuery.value.province = provinceValue.value
+  withdrawQuery.value.city = cityValue.value
+  fieldValue.value = selectedOptions.map((option) => option.text).join('/');
+};
+
 
 onBeforeMount(() => {
   getWithdrawData()
@@ -279,6 +299,28 @@ onBeforeMount(() => {
         <van-field class="rounded-[0.5rem]" input-align="right" :label="$t('withdraw.fullName')"
                    :placeholder="$t('withdraw.enterFullName')" v-model="withdrawQuery.real_name" label-width="10rem"
                    label-class="bold" :rules="[{ required: true, message: $t('withdraw.enterFullName') }]"/>
+      </div>
+      <div v-if="extracttype === $t('withdraw.card')" class="mt-6">
+        <van-field class="rounded-[0.5rem]"
+                   v-model="fieldValue"
+                   readonly
+                   input-align="right"
+                   label-class="bold"
+                   :label="$t('withdraw.area')"
+                   :placeholder="$t('withdraw.selectArea')"
+                   @click="show = true"
+                   :rules="[{ required: true, message: $t('withdraw.enterAddress') }]"
+        />
+        <van-popup v-model:show="show" round position="bottom">
+          <van-cascader
+              v-model="cascaderValue"
+              :title="$t('withdraw.selectArea')"
+              :placeholder="$t('withdraw.selectedArea')"
+              :options="options"
+              @close="show = false"
+              @finish="onFinish"
+          />
+        </van-popup>
       </div>
       <div v-if="extracttype === $t('withdraw.card')" class="mt-6">
         <van-field class="rounded-[0.5rem]" input-align="right" :label="$t('withdraw.bankName')"
@@ -404,7 +446,6 @@ onBeforeMount(() => {
   background-color: transparent !important;
 }
 
-
 .van-button--default {
   color: white;
   background-color: black;
@@ -415,7 +456,6 @@ onBeforeMount(() => {
   padding: 20px;
   background-color: white;
 }
-
 
 .bg {
   width: 100%;
