@@ -48,7 +48,7 @@ const rechargeQuery = ref({
 	"blockchain": "", //区块链地址 TWSLzeHqFoB2HsAsiFhoPd2QqHdaDeiQSr
 	"currency_type": "USD",
 	//"image": "", ///uploads/20241112/b22bcff086e7c41ea9d183b24f0af465.png
-	"network": "TRC20",
+	"network": "BEP20",
 	"order": "", //哈希值 123132966
 	"price": 0,
 	"real_name": "",
@@ -56,8 +56,9 @@ const rechargeQuery = ref({
 })
 // const type = ref('TRC20')
 const typeList = ref([
+  'BEP20',
 	'TRC20',
-	'BEP20',
+
 	//   'ERC20'
 ])
 //提交充值请求

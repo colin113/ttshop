@@ -153,7 +153,8 @@
 
 	//一键提货
 	const addList = ref({
-		ids: []
+		ids: [],
+    pay_password: ""
 	});
 	const costList = ref([]);
 	//点击传递订单id,切换订单checked属性
@@ -198,9 +199,11 @@
 			showFailToast(t("over"))
 		}
 	};
-	const confirmAll = async () => {
+	const confirmAll = async (password_pay) => {
 		const res = await payPwdconfirm(payPwd.value);
 		if (res.code == 1) {
+      addList.value.pay_password = password_pay
+
 			const res = await pickAll(addList.value);
 			//如果操作成功那么进行下一步,未成功给提示
 			if (res.code == 1) {
@@ -236,14 +239,18 @@
 
 	//支付密码确认接口
 	const order_id = ref({
-		order_id: ''
+		order_id: '',
+    pay_password: ''
 	});
 
-	const confirmOne = async () => {
+	const confirmOne = async (password_pay) => {
 		const res = await payPwdconfirm(payPwd.value);
 		// code.value = res.code
 		// console.log(code.value)
 		if (res.code == 1) {
+
+      order_id.value.pay_password = password_pay
+
 			pick(order_id.value).then(res => {
 				if (res.code == 1) {
 					showActionSheet.value = false;
@@ -265,9 +272,9 @@
 		payPwd.value.password_pay = data;
 		console.log(data);
 		if (addList.value.ids.length <= 0) {
-			confirmOne();
+			confirmOne(data.value);
 		} else {
-			confirmAll();
+			confirmAll(data.value);
 		}
 	};
 
