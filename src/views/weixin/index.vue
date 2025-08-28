@@ -65,6 +65,14 @@ const getBlockchaindata = async () => {
   const res = await getBlockchain({
     type: rechargeType.value,
   });
+  if (res.code == 0) {
+    showDialog({
+      message: res.msg,
+    }).then(() => {
+      onClickLeft()
+    });
+    return
+  }
   blockchaindata.value = res.data;
   imgUrl.value = res.data.url;
   if (blockchaindata.value.length > 0) {
